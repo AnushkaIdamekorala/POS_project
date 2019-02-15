@@ -11,12 +11,12 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addItem } from "../actions/itemActions";
-import uuid from "uuid";
 
 class ItemModal extends Component {
   state = {
     modal: false,
-    name: ""
+    name: "",
+    description: ""
   };
   toggle = () => {
     this.setState({
@@ -31,7 +31,8 @@ class ItemModal extends Component {
   onSubmit = e => {
     e.preventDefault();
     const newItem = {
-      name: this.state.name
+      name: this.state.name,
+      description: this.state.description
     };
 
     this.props.addItem(newItem);
@@ -60,6 +61,14 @@ class ItemModal extends Component {
                   name="name"
                   id="item"
                   placeholder="Add shopping item"
+                  onChange={this.onChange}
+                />
+                <Label for="item D">Description</Label>
+                <Input
+                  type="text"
+                  name="description"
+                  id="item_description"
+                  placeholder="Add shopping item description"
                   onChange={this.onChange}
                 />
                 <Button color="dark" style={{ marginTop: "2rem" }} block>
