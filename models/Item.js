@@ -7,13 +7,22 @@ const ItemSchema = new Schema({
     type: String,
     required: true
   },
+
   date: {
     type: Date,
     default: Date.now
   },
   description: {
     type: String,
-    default: "samare"
+    default: "samarey"
+  },
+  price: {
+    type: Number,
+    default: 0
+  },
+  available: {
+    type: Number,
+    default: 100
   }
 });
 

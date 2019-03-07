@@ -9,17 +9,27 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false   npm install --prefix client && npm run build --prefix client  "
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false   npm install --prefix client && npm run build --prefix client  ",
+    "test": "jest --detectOpenHandles --coverage"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "bcrypt": "^3.0.4",
     "body-parse": "^0.1.0",
     "concurrently": "^4.1.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
     "mongoose": "^5.4.11"
   },
   "author": "Idame",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^24.1.0",
+    "nodemon": "^1.18.10",
+    "superagent": "^4.1.0",
+    "supertest": "^3.4.2",
+    "supertest-session": "^3.3.0"
   }
 }

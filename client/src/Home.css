@@ -1,0 +1,42 @@
+.col-sm-3 {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+.cross-coner {
+  padding-bottom: 0px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
+}
+.cross-new {
+  padding-bottom: 20px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
+}
+
+.card:hover {
+  border: 1px solid rgb(212, 119, 12);
+  border-style: solid;
+  border-width: 2px;
+}
+
+.card {
+  border: 1px solid rgb(206, 197, 197);
+  background-color: rgb(221, 197, 152);
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fa-spin {
+  font-size: 48px;
+  color: rgb(158, 103, 19);
+}

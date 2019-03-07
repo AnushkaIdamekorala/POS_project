@@ -16,7 +16,9 @@ class ItemModal extends Component {
   state = {
     modal: false,
     name: "",
-    description: ""
+    description: "",
+    price: 0,
+    available: 100
   };
   toggle = () => {
     this.setState({
@@ -32,7 +34,9 @@ class ItemModal extends Component {
     e.preventDefault();
     const newItem = {
       name: this.state.name,
-      description: this.state.description
+      description: this.state.description,
+      price: this.state.price,
+      available: this.state.available
     };
 
     this.props.addItem(newItem);
@@ -55,7 +59,7 @@ class ItemModal extends Component {
           <ModalBody>
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for="item">Item</Label>
+                <Label for="item">Item ekaa</Label>
                 <Input
                   type="text"
                   name="name"
@@ -69,6 +73,22 @@ class ItemModal extends Component {
                   name="description"
                   id="item_description"
                   placeholder="Add shopping item description"
+                  onChange={this.onChange}
+                />
+                <Label for="item D">Price</Label>
+                <Input
+                  type="text"
+                  name="price"
+                  id="item_price"
+                  placeholder="Add shopping item price"
+                  onChange={this.onChange}
+                />
+                <Label for="item D">Available</Label>
+                <Input
+                  type="text"
+                  name="available"
+                  id="item_available"
+                  placeholder="Add shopping item available"
                   onChange={this.onChange}
                 />
                 <Button color="dark" style={{ marginTop: "2rem" }} block>

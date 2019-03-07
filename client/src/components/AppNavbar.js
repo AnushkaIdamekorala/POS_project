@@ -24,10 +24,10 @@ class AppNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar color="dark" dark expand="sm" className="mb-5">
+        <Navbar color="dark" dark expand="sm" className="mb-5 selfie">
           <Container>
             <NavbarBrand href="/">Shopping List</NavbarBrand>
-            <NavbarToggler onC lick={this.toggle} />
+            <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>

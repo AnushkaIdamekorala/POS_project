@@ -38,6 +38,10 @@
   margin-right: 0.5rem;
 }
 
+.add-btn {
+  margin-right: 0.5rem;
+}
+
 .fade-enter {
   opacity: 0.01;
 }
@@ -54,4 +58,128 @@
 .fade-exit-active {
   opacity: 0.01;
   transition: opacity 500ms ease-in;
+}
+
+.split {
+  height: 100%;
+
+  position: fixed;
+  z-index: 1;
+  top: 6;
+  overflow-x: hidden;
+  padding-top: 8px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  width: 65%;
+  background-color: rgb(172, 224, 89);
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  width: 35%;
+  background-color: rgb(84, 203, 207);
+}
+
+.oppo {
+  min-height: 60px;
+}
+
+.putha {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+input[title="Qtyt"],
+textarea {
+  background-color: #dbdd57;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.lib-panel {
+  margin-bottom: 20px;
+}
+.lib-panel img {
+  width: 100%;
+  background-color: transparent;
+}
+
+.lib-panel .row,
+.lib-panel .col-md-6 {
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.lib-panel .lib-row {
+  padding: 0 20px 0 20px;
+}
+
+.lib-panel .lib-row.lib-header {
+  background-color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 0 20px;
+}
+
+.lib-panel .lib-row.lib-header .lib-header-seperator {
+  height: 2px;
+  width: 26px;
+  background-color: #d9d9d9;
+  margin: 7px 0 7px 0;
+}
+
+.lib-panel .lib-row.lib-desc {
+  position: relative;
+  height: 100%;
+  display: block;
+  font-size: 13px;
+}
+.lib-panel .lib-row.lib-desc a {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  left: 20px;
+}
+
+.row-margin-bottom {
+  margin-bottom: 20px;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.disabled {
+  pointer-events: none;
+
+  /* for "disabled" effect */
+  opacity: 0.5;
+  background: rgb(199, 198, 211);
+}
+
+.bgimg {
+  background-image: url("https://thumbs.dreamstime.com/b/girl-market-young-woman-shopping-73861553.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Numans", sans-serif;
+}
+
+.bgimg2 {
+  background-image: url("https://www.nextavenue.org/wp-content/uploads/2018/07/The-Top-6-Healthy-Foods-to-Put-In-Your-Shopping-Cart_142142188-750x485.jpg");
+}
+
+.selfie {
+  padding-bottom: 0px;
 }

@@ -8,6 +8,7 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.5",
     "react-transition-group": "^2.5.3",
     "reactstrap": "^7.1.0",
@@ -19,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test-client": "jest"
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {
@@ -30,5 +32,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "moxios": "^0.4.0",
+    "redux-mock-store": "^1.5.3"
+  }
 }
