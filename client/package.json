@@ -3,8 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
+    "@fortawesome/free-solid-svg-icons": "^5.7.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "i": "^0.3.6",
+    "node-sass": "^4.11.0",
+    "npm": "^6.9.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.0",
@@ -14,6 +21,7 @@
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.85.0",
     "uuid": "^3.3.2"
   },
   "scripts": {
@@ -35,6 +43,13 @@
   ],
   "devDependencies": {
     "moxios": "^0.4.0",
-    "redux-mock-store": "^1.5.3"
+    "redux-mock-store": "^1.5.3",
+    "babel-jest": "^24.3.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "expect": "^24.3.1",
+    "fetch-mock": "^7.3.1",
+    "node-fetch": "^2.3.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.8.4"
   }
 }
