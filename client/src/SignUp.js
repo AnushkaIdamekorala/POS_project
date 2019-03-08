@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NoEmailModal from "./components/NoEmailModal";
+import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
@@ -92,9 +93,9 @@ class SignUp extends Component {
             <div class="card-footer">
               <div class="d-flex justify-content-center links">
                 Need to go back?
-                <a onClick={this.onWord}>
+                <Link to="/login">
                   <font color="blue">Login</font>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

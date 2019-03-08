@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container
-} from "reactstrap";
+import { Navbar, NavbarToggler, NavbarBrand, Container } from "reactstrap";
 import { connect } from "react-redux";
 import { clearCart } from "../actions/cartActions";
 

@@ -101,7 +101,7 @@ class Login extends Component {
                 <div class="d-flex justify-content-center links">
                   Don't have an account?
                   <Link to="/signup">
-                    <font color="blue">Login</font>
+                    <font color="blue">SignUp</font>
                   </Link>
                 </div>
               </div>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import NavbarNew from "./components/NavbarNew";
 
-import ItemModal from "./components/ItemModal";
 import { Container } from "reactstrap";
 
 import PropTypes from "prop-types";
