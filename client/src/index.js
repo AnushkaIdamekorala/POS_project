@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
-import Auth from "./Auth";
+
 import Layer from "./Layer";
 
 import * as serviceWorker from "./serviceWorker";
