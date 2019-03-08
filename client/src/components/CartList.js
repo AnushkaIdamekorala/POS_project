@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
+import { Container, ListGroup, ListGroupItem } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
 import {
@@ -10,7 +10,7 @@ import {
   updateCount,
   submitOrder
 } from "../actions/cartActions";
-import DetailNavbar from "./DetailNavbar";
+
 import PropTypes from "prop-types";
 
 import CartNavbar from "./CartNavbar";

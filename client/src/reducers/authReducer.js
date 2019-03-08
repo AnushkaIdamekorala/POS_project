@@ -1,5 +1,9 @@
 import {
   USER_LOGIN,
+  USER_NOT_FOUND,
+  USER_REFRESH,
+  USER_SIGNUP,
+  INVALID_EMAIL,
   AUTH_CHECK,
   USER_CARTS,
   CREATE_CART,
@@ -11,7 +15,10 @@ import isEmpty from "../validation/is-empty";
 
 const initialState = {
   isAuthenticated: false,
-  cartSet: []
+  cartSet: [],
+  isAuthFailed: false,
+  isSignFail: false,
+  isSignWell: false
 };
 
 const submitRole = (id, total, cartSet) => {
@@ -25,12 +32,32 @@ export default function(state = initialState, action) {
     case USER_LOGIN:
       return {
         ...state,
-        isAuthenticated: !isEmpty(action.payload)
+        isAuthenticated: !isEmpty(action.payload),
+        isAuthFailed: false
       };
     case USER_SIGN_OUT:
       return {
         ...state,
         isAuthenticated: false
+      };
+    case USER_NOT_FOUND:
+      return {
+        ...state,
+        isAuthenticated: false,
+        isAuthFailed: true
+      };
+    case INVALID_EMAIL:
+      return {
+        ...state,
+        isSignFail: true,
+        isSignWell: false
+      };
+    case USER_REFRESH:
+      return {
+        ...state,
+        isAuthFailed: false,
+        isSignWell: false,
+        isSignFail: false
       };
     case AUTH_CHECK:
       return {
@@ -60,6 +87,12 @@ export default function(state = initialState, action) {
           action.payload.total,
           state.cartSet
         )
+      };
+    case USER_SIGNUP:
+      return {
+        ...state,
+        isSignWell: true,
+        isSignFail: false
       };
 
     default:

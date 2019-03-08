@@ -92,15 +92,16 @@ router.delete("/:id/:itId", checkAuth, checkUser, (req, res) => {
           $pull: {
             items: { _id: req.params.itId }
           }
-        },
-        function(err, itId) {
-          if (err) {
-            res.status(404).json({ success: false });
-          } else {
-            res.status(204).json({ success: true });
-          }
         }
-      );
+      )
+        .then(result => {
+          if (result.nModified !== 0) {
+            res.status(204).json({ success: true });
+          } else {
+            res.status(404).json({ success: false });
+          }
+        })
+        .catch(() => res.status(404).json({ success: false }));
     }
   });
 });
@@ -115,7 +116,7 @@ router.delete("/:id", checkAuth, checkUser, (req, res) => {
       cart.save();
     }
   })
-    .then(() => res.json({ success: true }))
+    .then(() => res.status(204).json({ success: true }))
     .catch(err => res.status(404).json({ success: false }));
 });
 

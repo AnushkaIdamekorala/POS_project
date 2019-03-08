@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import WarningModal from "./components/WarningModal";
+import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
@@ -26,6 +28,10 @@ class Login extends Component {
     this.props.loginUser(userDetail);
   };
 
+  onWord = () => {
+    this.props.history.push("");
+  };
+
   componentDidMount() {
     if (this.props.auth.isAuthenticated === true) {
       this.props.history.push("/");
@@ -41,6 +47,7 @@ class Login extends Component {
         "url('https://image.shutterstock.com/image-photo/cheerful-mature-women-enjoying-funny-260nw-640975693.jpg')";
       return (
         <div class="container madata">
+          <WarningModal />
           <div class="d-flex justify-content-center h-100 ">
             <div class="cardd">
               <div class="card-header">
@@ -92,7 +99,10 @@ class Login extends Component {
               </div>
               <div class="card-footer">
                 <div class="d-flex justify-content-center links">
-                  Don't have an account?<a href="../signup">Sign Up</a>
+                  Don't have an account?
+                  <Link to="/signup">
+                    <font color="blue">Login</font>
+                  </Link>
                 </div>
               </div>
             </div>

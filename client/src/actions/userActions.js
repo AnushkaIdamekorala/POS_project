@@ -1,21 +1,39 @@
 import axios from "axios";
 import {
   USER_LOGIN,
+  USER_NOT_FOUND,
+  USER_REFRESH,
   USER_SIGN_OUT,
   AUTH_CHECK,
   USER_CARTS,
   CREATE_CART,
   USER_SIGNUP,
+  MAIL_EXIST,
+  INVALID_EMAIL,
   REMOVE_CART
 } from "./types";
 
 export const loginUser = details => dispatch => {
-  axios.post("/api/user/login", details).then(res =>
-    dispatch({
-      type: USER_LOGIN,
-      payload: res.data
-    })
-  );
+  axios
+    .post("/api/user/login", details)
+    .then(res =>
+      dispatch({
+        type: USER_LOGIN,
+        payload: res.data
+      })
+    )
+    .catch(res =>
+      dispatch({
+        type: USER_NOT_FOUND,
+        payload: res.data
+      })
+    );
+};
+
+export const userRefresh = () => dispatch => {
+  dispatch({
+    type: USER_REFRESH
+  });
 };
 
 export const signOutUser = () => dispatch => {
@@ -67,10 +85,32 @@ export const removeCart = id => dispatch => {
 };
 
 export const signupUser = details => dispatch => {
-  axios.post("/api/user/signup", details).then(res =>
-    dispatch({
-      type: USER_SIGNUP,
-      payload: res.data
-    })
-  );
+  axios
+    .post("/api/user/signup", details)
+    .then(res =>
+      dispatch({
+        type: USER_SIGNUP,
+        payload: res.data
+      })
+    )
+    .catch(res =>
+      dispatch({
+        type: INVALID_EMAIL
+      })
+    );
 };
+
+/*
+{
+      console.log(res);
+      if (res.data.message === "Mail exists") {
+        dispatch({
+          type: MAIL_EXIST
+        });
+      } else {
+        dispatch({
+        type: INVALID_EMAIL
+      })
+       
+      }
+    }*/

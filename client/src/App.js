@@ -1,18 +1,12 @@
 import React, { Component } from "react";
-import AppNavbar from "./components/AppNavbar";
+
 import NavbarNew from "./components/NavbarNew";
 
-import ShoppingList from "./components/ShoppingList";
 import CartList from "./components/CartList";
 import ShoppingItems from "./components/ShoppingItems";
-import CartLate from "./components/CartLate";
 
 import ItemModal from "./components/ItemModal";
 import { Container } from "reactstrap";
-import SplitPane from "react-split-pane";
-
-import { Provider } from "react-redux";
-import store from "./store";
 
 import { connect } from "react-redux";
 import { checkAuth, userCarts } from "./actions/userActions";

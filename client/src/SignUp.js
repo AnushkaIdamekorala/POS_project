@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import NoEmailModal from "./components/NoEmailModal";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 
-import { signupUser } from "./actions/userActions";
+import { signupUser, userRefresh } from "./actions/userActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -24,14 +25,23 @@ class SignUp extends Component {
       password: this.state.password
     };
     this.props.signupUser(userDetail);
+  };
+
+  onWord = () => {
     this.props.history.push("/login");
   };
 
-  componentDidMount() {}
+  componentWillReceiveProps(nextProp) {
+    if (nextProp.auth.isSignWell) {
+      nextProp.userRefresh();
+      nextProp.history.push("/login");
+    }
+  }
 
   render() {
     return (
       <div class="container madata">
+        <NoEmailModal />
         <div class="d-flex justify-content-center h-100 ">
           <div class="cardd">
             <div class="card-header">
@@ -81,7 +91,10 @@ class SignUp extends Component {
             </div>
             <div class="card-footer">
               <div class="d-flex justify-content-center links">
-                Need to go back?<a href="../login">Login</a>
+                Need to go back?
+                <a onClick={this.onWord}>
+                  <font color="blue">Login</font>
+                </a>
               </div>
             </div>
           </div>
@@ -90,7 +103,6 @@ class SignUp extends Component {
     );
   }
 }
-
 SignUp.propTypes = {
   auth: PropTypes.object.isRequired
 };
@@ -101,5 +113,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { signupUser }
+  { signupUser, userRefresh }
 )(SignUp);

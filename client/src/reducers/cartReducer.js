@@ -7,7 +7,6 @@ import {
   CLEAR_CART,
   SET_CART_ID
 } from "../actions/types";
-import ItemModal from "../components/ItemModal";
 
 const initialState = {
   cartId: "5c6a4c226c7e0a0f2c7ea2fb",

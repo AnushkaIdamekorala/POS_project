@@ -6,6 +6,7 @@ var token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudXNoa2EwNzMxQGdtYWlsLmNvbSIsInVzZXJJZCI6IjVjNmU5ZDFlMjE3NDRlNDQ4ODRlMGYwYyIsImlhdCI6MTU1MTc2OTYzOSwiZXhwIjoxNTUyMzc0NDM5fQ.0H4u3L1AUcTXb9cs5Q2SwxMjaHa4LoHNKbnlp_NIwlw";
 var carts;
 var items;
+var cartItems;
 beforeAll(async (done, res) => {
   await request(app)
     .post("/api/user/login")
@@ -109,35 +110,6 @@ describe("DELETE /user/removecart/:id", () => {
   });
 });
 
-describe("GET /carts/:id", () => {
-  test("should respond as expected", async () => {
-    const response = await request(app)
-      .get(`/api/carts/${carts[1].cartId}`)
-      .send({
-        token: token
-      })
-      .expect(200);
-  });
-});
-
-describe("GET /carts/:id", () => {
-  test("should respond as expected", async () => {
-    const response = await request(app)
-      .get("/api/carts/5c78d7f8ec99731ab84c10ef")
-      .send({
-        token: token
-      })
-      .expect(403);
-  });
-});
-
-describe("GET /carts/:id", () => {
-  test("should respond as expected", async () => {
-    const response = await request(app).get("/api/carts/123");
-    expect(response.status).toEqual(401);
-  });
-});
-
 describe("GET /items", () => {
   test("should respond as expected", async () => {
     const response = await request(app)
@@ -173,6 +145,7 @@ describe("POST /carts", () => {
       .expect(200);
   });
 });
+
 describe("POST /carts", () => {
   test("should respond as expected", async () => {
     const response = await request(app)
@@ -229,6 +202,99 @@ describe("PUT /:id/:itId/:count", () => {
         token: token
       })
       .expect(404);
+  });
+});
+
+describe("POST /carts", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .post("/api/carts")
+      .send({
+        token: token,
+        _id: carts[1].cartId,
+        count: 3,
+        itm: items[0]._id
+      })
+      .expect(200);
+  });
+});
+
+describe("POST /carts", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .post("/api/carts")
+      .send({
+        token: token,
+        _id: carts[1].cartId,
+        count: 3,
+        itm: items[1]._id
+      })
+      .expect(200);
+  });
+});
+
+describe("GET /carts/:id", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .get(`/api/carts/${carts[1].cartId}`)
+      .send({
+        token: token
+      })
+      .expect(200)
+      .then(res => {
+        cartItems = res.body;
+      });
+  });
+});
+
+describe("GET /carts/:id", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .get("/api/carts/5c78d7f8ec99731ab84c10ef")
+      .send({
+        token: token
+      })
+      .expect(403);
+  });
+});
+
+describe("GET /carts/:id", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app).get("/api/carts/123");
+    expect(response.status).toEqual(401);
+  });
+});
+
+describe("DELETE /carts/:id/:itId", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .delete(`/api/carts/${carts[1].cartId}/${cartItems.items[1]._id}`)
+      .send({
+        token: token
+      })
+      .expect(204);
+  });
+});
+
+describe("DELETE /carts/:id/:itId", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .delete(`/api/carts/${carts[1].cartId}/${cartItems.items[1]._id}`)
+      .send({
+        token: token
+      })
+      .expect(404);
+  });
+});
+
+describe("DELETE /carts/:id", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .delete(`/api/carts/${carts[1].cartId}`)
+      .send({
+        token: token
+      })
+      .expect(204);
   });
 });
 

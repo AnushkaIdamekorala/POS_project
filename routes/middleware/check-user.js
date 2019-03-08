@@ -10,13 +10,13 @@ module.exports = (req, res, next) => {
   let myId = req.params.id || req.body._id;
   const em = req.userData.email;
   User.findOne({ email: em }).then(user => {
-    let a = false;
+    let isInArray = false;
     for (let i of user.orders) {
       if (i.cartId == myId) {
-        a = true;
+        isInArray = true;
       }
     }
-    if (a) {
+    if (isInArray) {
       next();
     } else {
       res.status(403).json({ success: false });
