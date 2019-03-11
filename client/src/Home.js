@@ -61,11 +61,14 @@ class Home extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProp) {
+    if (nextProp.auth.isAuthenticated === false) {
+      nextProp.history.push("/login");
+    }
+  }
+
   render() {
-    if (this.props.auth.isAuthenticated === false) {
-      this.props.history.push("/login");
-      return null;
-    } else {
+    {
       const { cartSet } = this.props.auth;
 
       document.body.style.backgroundImage =

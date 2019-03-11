@@ -38,78 +38,79 @@ class Login extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProp) {
+    if (nextProp.auth.isAuthenticated) {
+      nextProp.history.push("/");
+    }
+  }
+
   render() {
-    if (this.props.auth.isAuthenticated === true) {
-      this.props.history.push("/");
-      return null;
-    } else {
-      document.body.style.backgroundImage =
-        "url('https://image.shutterstock.com/image-photo/cheerful-mature-women-enjoying-funny-260nw-640975693.jpg')";
-      return (
-        <div class="container madata">
-          <WarningModal />
-          <div class="d-flex justify-content-center h-100 ">
-            <div class="cardd">
-              <div class="card-header">
-                <h3>Sign In</h3>
-              </div>
-              <div class="card-body">
-                <form>
-                  <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fas fa-user" />
-                      </span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="email"
-                      placeholder="email"
-                      onChange={this.onChange}
-                    />
+    document.body.style.backgroundImage =
+      "url('https://image.shutterstock.com/image-photo/cheerful-mature-women-enjoying-funny-260nw-640975693.jpg')";
+    return (
+      <div class="container madata">
+        <WarningModal />
+        <div class="d-flex justify-content-center h-100 ">
+          <div class="cardd">
+            <div class="card-header">
+              <h3>Sign In</h3>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-user" />
+                    </span>
                   </div>
-                  <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fas fa-key" />
-                      </span>
-                    </div>
-                    <input
-                      type="password"
-                      class="form-control"
-                      name="password"
-                      placeholder="password"
-                      onChange={this.onChange}
-                    />
-                  </div>
-                  <div class="row align-items-center remember">
-                    <input type="checkbox" />
-                    Remember Me
-                  </div>
-                  <div class="form-group">
-                    <input
-                      type="submit"
-                      value="Login"
-                      class="btn float-right login_btn"
-                      onClick={this.onSubmit}
-                    />
-                  </div>
-                </form>
-              </div>
-              <div class="card-footer">
-                <div class="d-flex justify-content-center links">
-                  Don't have an account?
-                  <Link to="/signup">
-                    <font color="blue">SignUp</font>
-                  </Link>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="email"
+                    placeholder="email"
+                    onChange={this.onChange}
+                  />
                 </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-key" />
+                    </span>
+                  </div>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    placeholder="password"
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div class="row align-items-center remember">
+                  <input type="checkbox" />
+                  Remember Me
+                </div>
+                <div class="form-group">
+                  <input
+                    type="submit"
+                    value="Login"
+                    className="btn float-right login_btn"
+                    onClick={this.onSubmit}
+                  />
+                </div>
+              </form>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex justify-content-center links">
+                Don't have an account?
+                <Link to="/signup">
+                  <font color="blue">SignUp</font>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
