@@ -14,7 +14,7 @@ import {
 } from "./types";
 
 export const loginUser = details => dispatch => {
-  axios
+  return axios
     .post("/api/user/login", details)
     .then(res =>
       dispatch({
@@ -37,7 +37,7 @@ export const userRefresh = () => dispatch => {
 };
 
 export const signOutUser = () => dispatch => {
-  axios.get("/api/user/signout").then(res =>
+  return axios.get("/api/user/signout").then(res =>
     dispatch({
       type: USER_SIGN_OUT,
       payload: res.data
@@ -46,7 +46,7 @@ export const signOutUser = () => dispatch => {
 };
 
 export const checkAuth = () => dispatch => {
-  axios.post("/api/user/checkAuth").then(res =>
+  return axios.post("/api/user/checkAuth").then(res =>
     dispatch({
       type: AUTH_CHECK,
       payload: res.data.success
@@ -55,7 +55,7 @@ export const checkAuth = () => dispatch => {
 };
 
 export const userCarts = () => dispatch => {
-  axios.get("/api/user/what").then(res =>
+  return axios.get("/api/user/what").then(res =>
     dispatch({
       type: USER_CARTS,
       payload: res.data.info
@@ -64,7 +64,7 @@ export const userCarts = () => dispatch => {
 };
 
 export const createCart = table => dispatch => {
-  axios.get(`/api/user/create/${table}`).then(res =>
+  return axios.get(`/api/user/create/${table}`).then(res =>
     dispatch({
       type: CREATE_CART,
       payload: res.data
@@ -73,7 +73,7 @@ export const createCart = table => dispatch => {
 };
 
 export const removeCart = id => dispatch => {
-  axios.delete(`/api/user/removecart/${id}`).then(res => {
+  return axios.delete(`/api/user/removecart/${id}`).then(res => {
     if (res.data.success) {
       dispatch({
         type: REMOVE_CART,
@@ -85,7 +85,7 @@ export const removeCart = id => dispatch => {
 };
 
 export const signupUser = details => dispatch => {
-  axios
+  return axios
     .post("/api/user/signup", details)
     .then(res =>
       dispatch({

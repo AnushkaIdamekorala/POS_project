@@ -9,7 +9,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  cartId: "5c6a4c226c7e0a0f2c7ea2fb",
+  cartId: "",
   cartItems: [],
   cartLoading: false,
   totalAmount: 0
