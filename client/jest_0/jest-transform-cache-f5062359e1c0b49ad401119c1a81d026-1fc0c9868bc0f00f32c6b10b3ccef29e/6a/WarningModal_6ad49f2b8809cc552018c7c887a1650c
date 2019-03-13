@@ -1,0 +1,74 @@
+3ba13f93612b3eee3da898122b0e5dce
+"use strict";
+
+var _interopRequireWildcard = require("/home/anushkai/Desktop/Training/code/redux/fullStack/client/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("/home/anushkai/Desktop/Training/code/redux/fullStack/client/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactstrap = require("reactstrap");
+
+var _reactRedux = require("react-redux");
+
+var _userActions = require("../actions/userActions");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _jsxFileName = "/home/anushkai/Desktop/Training/code/redux/fullStack/client/src/components/WarningModal.js";
+
+class WarningModal extends _react.Component {
+  constructor(...args) {
+    super(...args);
+
+    this.toggle = () => {
+      this.props.userRefresh();
+    };
+  }
+
+  render() {
+    return _react.default.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.Modal, {
+      isOpen: this.props.auth.isAuthFailed,
+      toggle: this.toggle,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.ModalHeader, {
+      toggle: this.toggle,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      },
+      __self: this
+    }, "Authentication Failed")));
+  }
+
+}
+
+WarningModal.propTypes = {
+  auth: _propTypes.default.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, {
+  userRefresh: _userActions.userRefresh
+})(WarningModal);
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIldhcm5pbmdNb2RhbC5qcyJdLCJuYW1lcyI6WyJXYXJuaW5nTW9kYWwiLCJDb21wb25lbnQiLCJ0b2dnbGUiLCJwcm9wcyIsInVzZXJSZWZyZXNoIiwicmVuZGVyIiwiYXV0aCIsImlzQXV0aEZhaWxlZCIsInByb3BUeXBlcyIsIlByb3BUeXBlcyIsIm9iamVjdCIsImlzUmVxdWlyZWQiLCJtYXBTdGF0ZVRvUHJvcHMiLCJzdGF0ZSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7QUFBQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7OztBQUVBLE1BQU1BLFlBQU4sU0FBMkJDLGdCQUEzQixDQUFxQztBQUFBO0FBQUE7O0FBQUEsU0FDbkNDLE1BRG1DLEdBQzFCLE1BQU07QUFDYixXQUFLQyxLQUFMLENBQVdDLFdBQVg7QUFDRCxLQUhrQztBQUFBOztBQUtuQ0MsRUFBQUEsTUFBTSxHQUFHO0FBQ1AsV0FDRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNFLDZCQUFDLGlCQUFEO0FBQU8sTUFBQSxNQUFNLEVBQUUsS0FBS0YsS0FBTCxDQUFXRyxJQUFYLENBQWdCQyxZQUEvQjtBQUE2QyxNQUFBLE1BQU0sRUFBRSxLQUFLTCxNQUExRDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNFLDZCQUFDLHVCQUFEO0FBQWEsTUFBQSxNQUFNLEVBQUUsS0FBS0EsTUFBMUI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsK0JBREYsQ0FERixDQURGO0FBT0Q7O0FBYmtDOztBQWdCckNGLFlBQVksQ0FBQ1EsU0FBYixHQUF5QjtBQUN2QkYsRUFBQUEsSUFBSSxFQUFFRyxtQkFBVUMsTUFBVixDQUFpQkM7QUFEQSxDQUF6Qjs7QUFJQSxNQUFNQyxlQUFlLEdBQUdDLEtBQUssS0FBSztBQUNoQ1AsRUFBQUEsSUFBSSxFQUFFTyxLQUFLLENBQUNQO0FBRG9CLENBQUwsQ0FBN0I7O2VBSWUseUJBQ2JNLGVBRGEsRUFFYjtBQUFFUixFQUFBQSxXQUFXLEVBQVhBO0FBQUYsQ0FGYSxFQUdiSixZQUhhLEMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgQ29tcG9uZW50IH0gZnJvbSBcInJlYWN0XCI7XG5pbXBvcnQgeyBNb2RhbCwgTW9kYWxIZWFkZXIgfSBmcm9tIFwicmVhY3RzdHJhcFwiO1xuaW1wb3J0IHsgY29ubmVjdCB9IGZyb20gXCJyZWFjdC1yZWR1eFwiO1xuaW1wb3J0IHsgdXNlclJlZnJlc2ggfSBmcm9tIFwiLi4vYWN0aW9ucy91c2VyQWN0aW9uc1wiO1xuaW1wb3J0IFByb3BUeXBlcyBmcm9tIFwicHJvcC10eXBlc1wiO1xuXG5jbGFzcyBXYXJuaW5nTW9kYWwgZXh0ZW5kcyBDb21wb25lbnQge1xuICB0b2dnbGUgPSAoKSA9PiB7XG4gICAgdGhpcy5wcm9wcy51c2VyUmVmcmVzaCgpO1xuICB9O1xuXG4gIHJlbmRlcigpIHtcbiAgICByZXR1cm4gKFxuICAgICAgPGRpdj5cbiAgICAgICAgPE1vZGFsIGlzT3Blbj17dGhpcy5wcm9wcy5hdXRoLmlzQXV0aEZhaWxlZH0gdG9nZ2xlPXt0aGlzLnRvZ2dsZX0+XG4gICAgICAgICAgPE1vZGFsSGVhZGVyIHRvZ2dsZT17dGhpcy50b2dnbGV9PkF1dGhlbnRpY2F0aW9uIEZhaWxlZDwvTW9kYWxIZWFkZXI+XG4gICAgICAgIDwvTW9kYWw+XG4gICAgICA8L2Rpdj5cbiAgICApO1xuICB9XG59XG5cbldhcm5pbmdNb2RhbC5wcm9wVHlwZXMgPSB7XG4gIGF1dGg6IFByb3BUeXBlcy5vYmplY3QuaXNSZXF1aXJlZFxufTtcblxuY29uc3QgbWFwU3RhdGVUb1Byb3BzID0gc3RhdGUgPT4gKHtcbiAgYXV0aDogc3RhdGUuYXV0aFxufSk7XG5cbmV4cG9ydCBkZWZhdWx0IGNvbm5lY3QoXG4gIG1hcFN0YXRlVG9Qcm9wcyxcbiAgeyB1c2VyUmVmcmVzaCB9XG4pKFdhcm5pbmdNb2RhbCk7XG4iXX0=

@@ -3,7 +3,6 @@ import {
   USER_NOT_FOUND,
   USER_REFRESH,
   USER_SIGNUP,
-  INVALID_EMAIL,
   AUTH_CHECK,
   USER_CARTS,
   CREATE_CART,
@@ -46,12 +45,7 @@ export default function(state = initialState, action) {
         isAuthenticated: false,
         isAuthFailed: true
       };
-    case INVALID_EMAIL:
-      return {
-        ...state,
-        isSignFail: true,
-        isSignWell: false
-      };
+
     case USER_REFRESH:
       return {
         ...state,

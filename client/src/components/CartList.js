@@ -29,9 +29,8 @@ class CartList extends Component {
 
   onChange = e => {
     if (e.target.size < e.target.value) {
-      e.target.title = "Qtyt";
+      e.target.value = e.target.size;
     } else {
-      e.target.title = "Qty";
       this.props.updateCount(e.target.id, e.target.value);
     }
   };
@@ -114,21 +113,21 @@ class CartList extends Component {
                           <div class="col-sm-1 text-right">
                             <h2>x</h2>
                           </div>
-                          <div class="col-sm-3 text-right">
+                          <div class="col-sm-4 text-right">
                             <input
                               id={_id}
                               type="number"
                               step={1}
                               defaultValue={count}
                               min={1}
-                              title="Qty"
+                              title={"maxiumum " + itm.available}
                               className="form-control form-control-lg"
                               borderColor="red"
                               size={itm.available}
                               onChange={this.onChange}
                             />
                           </div>
-                          <div class="col-sm-3 ">
+                          <div class="col-sm-2 ">
                             <div class="row text-right">up to</div>
                             <div class="row text-right"> {itm.available}</div>
                           </div>

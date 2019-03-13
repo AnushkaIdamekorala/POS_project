@@ -1,0 +1,73 @@
+2a7ceffdf45f7b9076c1725d08aa4a53
+"use strict";
+
+var _interopRequireDefault = require("/home/anushkai/Desktop/Training/code/redux/fullStack/client/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _interopRequireWildcard = require("/home/anushkai/Desktop/Training/code/redux/fullStack/client/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireWildcard");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _enzyme = _interopRequireWildcard(require("enzyme"));
+
+var _enzymeAdapterReact = _interopRequireDefault(require("enzyme-adapter-react-16"));
+
+var _ShoppingItems = _interopRequireDefault(require("../components/ShoppingItems"));
+
+var _reduxThunk = _interopRequireDefault(require("redux-thunk"));
+
+var _reactRedux = require("react-redux");
+
+var _sinon = _interopRequireDefault(require("sinon"));
+
+var _reduxMockStore = _interopRequireDefault(require("redux-mock-store"));
+
+var _jsxFileName = "/home/anushkai/Desktop/Training/code/redux/fullStack/client/src/client_test_/ShoppingItems.test.js";
+const middlewares = [_reduxThunk.default];
+
+_enzyme.default.configure({
+  adapter: new _enzymeAdapterReact.default()
+});
+
+describe("components", () => {
+  describe("Login component", () => {
+    const mockStore = (0, _reduxMockStore.default)(middlewares);
+    let store;
+
+    const loginUser = _sinon.default.spy();
+
+    const userCarts = _sinon.default.spy();
+
+    const initialState = {
+      item: {
+        items: []
+      },
+      cart: {
+        cartItems: []
+      }
+    };
+    beforeEach(() => {
+      store = mockStore(initialState);
+    });
+    it("should render self and subcomponents", () => {
+      /* const props = {
+        login: jest.fn()
+      }; */
+      const wrapper = (0, _enzyme.mount)(_react.default.createElement(_reactRedux.Provider, {
+        store: store,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        },
+        __self: void 0
+      }, _react.default.createElement(_ShoppingItems.default, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        },
+        __self: void 0
+      })));
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlNob3BwaW5nSXRlbXMudGVzdC5qcyJdLCJuYW1lcyI6WyJtaWRkbGV3YXJlcyIsInRodW5rIiwiRW56eW1lIiwiY29uZmlndXJlIiwiYWRhcHRlciIsIkFkYXB0ZXIiLCJkZXNjcmliZSIsIm1vY2tTdG9yZSIsInN0b3JlIiwibG9naW5Vc2VyIiwic2lub24iLCJzcHkiLCJ1c2VyQ2FydHMiLCJpbml0aWFsU3RhdGUiLCJpdGVtIiwiaXRlbXMiLCJjYXJ0IiwiY2FydEl0ZW1zIiwiYmVmb3JlRWFjaCIsIml0Iiwid3JhcHBlciIsImV4cGVjdCIsInRvTWF0Y2hTbmFwc2hvdCJdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUE7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBRUE7OztBQUVBLE1BQU1BLFdBQVcsR0FBRyxDQUFDQyxtQkFBRCxDQUFwQjs7QUFFQUMsZ0JBQU9DLFNBQVAsQ0FBaUI7QUFBRUMsRUFBQUEsT0FBTyxFQUFFLElBQUlDLDJCQUFKO0FBQVgsQ0FBakI7O0FBRUFDLFFBQVEsQ0FBQyxZQUFELEVBQWUsTUFBTTtBQUMzQkEsRUFBQUEsUUFBUSxDQUFDLGlCQUFELEVBQW9CLE1BQU07QUFDaEMsVUFBTUMsU0FBUyxHQUFHLDZCQUFlUCxXQUFmLENBQWxCO0FBQ0EsUUFBSVEsS0FBSjs7QUFDQSxVQUFNQyxTQUFTLEdBQUdDLGVBQU1DLEdBQU4sRUFBbEI7O0FBQ0EsVUFBTUMsU0FBUyxHQUFHRixlQUFNQyxHQUFOLEVBQWxCOztBQUVBLFVBQU1FLFlBQVksR0FBRztBQUNuQkMsTUFBQUEsSUFBSSxFQUFFO0FBQ0pDLFFBQUFBLEtBQUssRUFBRTtBQURILE9BRGE7QUFJbkJDLE1BQUFBLElBQUksRUFBRTtBQUNKQyxRQUFBQSxTQUFTLEVBQUU7QUFEUDtBQUphLEtBQXJCO0FBU0FDLElBQUFBLFVBQVUsQ0FBQyxNQUFNO0FBQ2ZWLE1BQUFBLEtBQUssR0FBR0QsU0FBUyxDQUFDTSxZQUFELENBQWpCO0FBQ0QsS0FGUyxDQUFWO0FBR0FNLElBQUFBLEVBQUUsQ0FBQyxzQ0FBRCxFQUF5QyxNQUFNO0FBQy9DOzs7QUFHQSxZQUFNQyxPQUFPLEdBQUcsbUJBQ2QsNkJBQUMsb0JBQUQ7QUFBVSxRQUFBLEtBQUssRUFBRVosS0FBakI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FDRSw2QkFBQyxzQkFBRDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxRQURGLENBRGMsQ0FBaEI7QUFLQWEsTUFBQUEsTUFBTSxDQUFDRCxPQUFELENBQU4sQ0FBZ0JFLGVBQWhCO0FBQ0QsS0FWQyxDQUFGO0FBV0QsR0E3Qk8sQ0FBUjtBQThCRCxDQS9CTyxDQUFSIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xuaW1wb3J0IEVuenltZSwgeyBzaGFsbG93LCBtb3VudCB9IGZyb20gXCJlbnp5bWVcIjtcbmltcG9ydCBBZGFwdGVyIGZyb20gXCJlbnp5bWUtYWRhcHRlci1yZWFjdC0xNlwiO1xuaW1wb3J0IFNob3BwaW5nSXRlbXMgZnJvbSBcIi4uL2NvbXBvbmVudHMvU2hvcHBpbmdJdGVtc1wiO1xuaW1wb3J0IHRodW5rIGZyb20gXCJyZWR1eC10aHVua1wiO1xuaW1wb3J0IHsgUHJvdmlkZXIgfSBmcm9tIFwicmVhY3QtcmVkdXhcIjtcbmltcG9ydCBzaW5vbiBmcm9tIFwic2lub25cIjtcblxuaW1wb3J0IGNvbmZpZ3VyZVN0b3JlIGZyb20gXCJyZWR1eC1tb2NrLXN0b3JlXCI7XG5cbmNvbnN0IG1pZGRsZXdhcmVzID0gW3RodW5rXTtcblxuRW56eW1lLmNvbmZpZ3VyZSh7IGFkYXB0ZXI6IG5ldyBBZGFwdGVyKCkgfSk7XG5cbmRlc2NyaWJlKFwiY29tcG9uZW50c1wiLCAoKSA9PiB7XG4gIGRlc2NyaWJlKFwiTG9naW4gY29tcG9uZW50XCIsICgpID0+IHtcbiAgICBjb25zdCBtb2NrU3RvcmUgPSBjb25maWd1cmVTdG9yZShtaWRkbGV3YXJlcyk7XG4gICAgbGV0IHN0b3JlO1xuICAgIGNvbnN0IGxvZ2luVXNlciA9IHNpbm9uLnNweSgpO1xuICAgIGNvbnN0IHVzZXJDYXJ0cyA9IHNpbm9uLnNweSgpO1xuXG4gICAgY29uc3QgaW5pdGlhbFN0YXRlID0ge1xuICAgICAgaXRlbToge1xuICAgICAgICBpdGVtczogW11cbiAgICAgIH0sXG4gICAgICBjYXJ0OiB7XG4gICAgICAgIGNhcnRJdGVtczogW11cbiAgICAgIH1cbiAgICB9O1xuXG4gICAgYmVmb3JlRWFjaCgoKSA9PiB7XG4gICAgICBzdG9yZSA9IG1vY2tTdG9yZShpbml0aWFsU3RhdGUpO1xuICAgIH0pO1xuICAgIGl0KFwic2hvdWxkIHJlbmRlciBzZWxmIGFuZCBzdWJjb21wb25lbnRzXCIsICgpID0+IHtcbiAgICAgIC8qIGNvbnN0IHByb3BzID0ge1xuICAgICAgICBsb2dpbjogamVzdC5mbigpXG4gICAgICB9OyAqL1xuICAgICAgY29uc3Qgd3JhcHBlciA9IG1vdW50KFxuICAgICAgICA8UHJvdmlkZXIgc3RvcmU9e3N0b3JlfT5cbiAgICAgICAgICA8U2hvcHBpbmdJdGVtcyAvPlxuICAgICAgICA8L1Byb3ZpZGVyPlxuICAgICAgKTtcbiAgICAgIGV4cGVjdCh3cmFwcGVyKS50b01hdGNoU25hcHNob3QoKTtcbiAgICB9KTtcbiAgfSk7XG59KTtcbiJdfQ==

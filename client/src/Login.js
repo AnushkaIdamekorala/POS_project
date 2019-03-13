@@ -48,19 +48,19 @@ class Login extends Component {
     document.body.style.backgroundImage =
       "url('https://image.shutterstock.com/image-photo/cheerful-mature-women-enjoying-funny-260nw-640975693.jpg')";
     return (
-      <div class="container madata">
+      <div className="container madata">
         <WarningModal />
-        <div class="d-flex justify-content-center h-100 ">
-          <div class="cardd">
-            <div class="card-header">
+        <div className="d-flex justify-content-center h-100 ">
+          <div className="cardd">
+            <div className="card-header">
               <h3>Sign In</h3>
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <form>
-                <div class="input-group form-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="fas fa-user" />
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">
+                      <i className="fas fa-user" />
                     </span>
                   </div>
                   <input
@@ -71,25 +71,25 @@ class Login extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <div class="input-group form-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="fas fa-key" />
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">
+                      <i className="fas fa-key" />
                     </span>
                   </div>
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     name="password"
                     placeholder="password"
                     onChange={this.onChange}
                   />
                 </div>
-                <div class="row align-items-center remember">
+                <div className="row align-items-center remember">
                   <input type="checkbox" />
                   Remember Me
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="submit"
                     value="Login"
@@ -99,8 +99,8 @@ class Login extends Component {
                 </div>
               </form>
             </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-center links">
+            <div className="card-footer">
+              <div className="d-flex justify-content-center links">
                 Don't have an account?
                 <Link to="/signup">
                   <font color="blue">SignUp</font>

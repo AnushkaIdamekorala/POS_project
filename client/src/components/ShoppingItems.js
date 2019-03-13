@@ -16,8 +16,18 @@ class ShoppingItems extends Component {
 
   onAddClick = (id, name) => {
     let count = parseInt(document.getElementById(id).value, 10);
+    if (isNaN(count)) {
+      count = 1;
+    }
+    console.log(count);
     this.props.addToCart(id, count);
     document.getElementById(name).className = "disabled";
+  };
+
+  onChange = e => {
+    if (e.target.size < e.target.value) {
+      e.target.value = e.target.size;
+    }
   };
 
   render() {
@@ -92,14 +102,14 @@ class ShoppingItems extends Component {
                         <div className="quantity">
                           <input
                             id={it._id}
-                            className="nextLevel"
                             type="number"
                             step={1}
                             defaultValue={1}
                             min={1}
-                            title="Qty"
+                            title={"maxiumum " + it.available}
                             className="form-control form-control-sm"
-                            size={4}
+                            size={it.available}
+                            onChange={this.onChange}
                           />
                           <br />
                           <small>
@@ -121,11 +131,6 @@ class ShoppingItems extends Component {
                   <hr />
                 </div>
               ))}
-              <div className="float-right">
-                <a className="btn btn-outline-secondary float-right">
-                  Add Items
-                </a>
-              </div>
             </div>
             <div className="card-footer">
               <div className="coupon col-md-5 col-sm-5 no-padding-left float-left">
@@ -146,16 +151,7 @@ class ShoppingItems extends Component {
                   </div>
                 </div>
               </div>
-              <div className="float-right" style={{ margin: "10px" }}>
-                <a className="btn btn-success float-right">Checkout</a>
-                <div
-                  className="float-right"
-                  style={{ margin: "5px" }}
-                  id="total-price"
-                >
-                  Total price:
-                </div>
-              </div>
+              <div className="float-right" style={{ margin: "10px" }} />
             </div>
           </div>
         </div>

@@ -8,7 +8,6 @@ import {
   USER_CARTS,
   CREATE_CART,
   USER_SIGNUP,
-  MAIL_EXIST,
   INVALID_EMAIL,
   REMOVE_CART
 } from "./types";

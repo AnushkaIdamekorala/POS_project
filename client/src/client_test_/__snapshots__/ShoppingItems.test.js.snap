@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components Login component should render self and subcomponents 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ShoppingItems)>
+    <ShoppingItems
+      addToCart={[Function]}
+      cart={
+        Object {
+          "cartItems": Array [],
+        }
+      }
+      deleteItem={[Function]}
+      getItems={[Function]}
+      item={
+        Object {
+          "items": Array [],
+        }
+      }
+    >
+      <div
+        className="containerer"
+      >
+        <div
+          className="card shopping-cart"
+        >
+          <div
+            className="card-header bg-dark text-light"
+          >
+            <span>
+               
+            </span>
+            Here is what we got!!!
+            <div
+              className="clearfix"
+            />
+          </div>
+          <div
+            className="card-body"
+          />
+          <div
+            className="card-footer"
+          >
+            <div
+              className="coupon col-md-5 col-sm-5 no-padding-left float-left"
+            >
+              <div
+                className="row"
+              >
+                <div
+                  className="col-6"
+                >
+                  <input
+                    className="form-control"
+                    placeholder="cupone code"
+                    type="text"
+                  />
+                </div>
+                <div
+                  className="col-6"
+                >
+                  <input
+                    className="btn btn-default"
+                    defaultValue="Use cupone"
+                    type="submit"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="float-right"
+              style={
+                Object {
+                  "margin": "10px",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </ShoppingItems>
+  </Connect(ShoppingItems)>
+</Provider>
+`;

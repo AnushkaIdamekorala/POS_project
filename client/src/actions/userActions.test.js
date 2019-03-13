@@ -53,6 +53,46 @@ describe("loginUser userActions", () => {
   });
 });
 
+describe("loginUser userActions", () => {
+  beforeEach(function() {
+    moxios.install();
+  });
+
+  afterEach(function() {
+    moxios.uninstall();
+  });
+
+  test("correctly", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404
+      });
+    });
+
+    const expectedActions = [
+      {
+        type: types.USER_NOT_FOUND
+      }
+    ];
+
+    const store = mockStore({
+      isAuthenticated: false,
+      cartSet: [],
+      isAuthFailed: false,
+      isSignFail: false,
+      isSignWell: false
+    });
+
+    let details = { username: "test@test", password: "1234" };
+
+    return store.dispatch(actions.loginUser(details)).then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
+
 describe("signOutUser userActions", () => {
   beforeEach(function() {
     moxios.install();
@@ -221,5 +261,176 @@ describe("signupUser userActions", () => {
       // return of async actions
       expect(store.getActions()).toEqual(expectedActions);
     });
+  });
+});
+describe("signupUser userActions", () => {
+  beforeEach(function() {
+    moxios.install();
+  });
+
+  afterEach(function() {
+    moxios.uninstall();
+  });
+
+  test("correctly", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 401
+      });
+    });
+
+    const expectedActions = [
+      {
+        type: types.INVALID_EMAIL
+      }
+    ];
+
+    const store = mockStore({
+      isAuthenticated: false,
+      cartSet: [],
+      isAuthFailed: false,
+      isSignFail: false,
+      isSignWell: false
+    });
+    let details = { username: "tecom", password: "1234" };
+
+    return store.dispatch(actions.signupUser(details)).then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
+
+describe("createCart userActions", () => {
+  beforeEach(function() {
+    moxios.install();
+  });
+
+  afterEach(function() {
+    moxios.uninstall();
+  });
+
+  test("correctly", () => {
+    let expectedJson = [
+      { table: 6, _id: "234234", totalAmount: 0 },
+      { table: 2, _id: "474234", totalAmount: 0 },
+      { table: 1, _id: "234994", totalAmount: 432 }
+    ];
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: expectedJson
+      });
+    });
+
+    let table = 6;
+
+    const expectedActions = [
+      {
+        payload: expectedJson,
+        type: types.CREATE_CART
+      }
+    ];
+
+    const store = mockStore({
+      isAuthenticated: false,
+      cartSet: [],
+      isAuthFailed: false,
+      isSignFail: false,
+      isSignWell: false
+    });
+
+    return store.dispatch(actions.createCart(table)).then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
+
+describe("userCarts userActions", () => {
+  beforeEach(function() {
+    moxios.install();
+  });
+
+  afterEach(function() {
+    moxios.uninstall();
+  });
+
+  test("correctly", () => {
+    let expectedJson = {
+      info: [
+        { table: 6, _id: "234234", totalAmount: 0 },
+        { table: 2, _id: "474234", totalAmount: 0 },
+        { table: 1, _id: "234994", totalAmount: 432 }
+      ]
+    };
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: expectedJson
+      });
+    });
+
+    const expectedActions = [
+      {
+        payload: expectedJson.info,
+        type: types.USER_CARTS
+      }
+    ];
+
+    const store = mockStore({
+      isAuthenticated: false,
+      cartSet: [],
+      isAuthFailed: false,
+      isSignFail: false,
+      isSignWell: false
+    });
+
+    return store.dispatch(actions.userCarts()).then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
+
+describe("userRefresh userActions", () => {
+  beforeEach(function() {
+    moxios.install();
+  });
+
+  afterEach(function() {
+    moxios.uninstall();
+  });
+
+  test("correctly", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 204
+      });
+    });
+
+    const expectedActions = [
+      {
+        type: types.USER_REFRESH
+      }
+    ];
+
+    const store = mockStore({
+      isAuthenticated: false,
+      cartSet: [],
+      isAuthFailed: false,
+      isSignFail: false,
+      isSignWell: false
+    });
+
+    store.dispatch(actions.userRefresh());
+    // return of async actions
+    expect(store.getActions()).toEqual(expectedActions);
   });
 });

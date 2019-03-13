@@ -95,6 +95,32 @@ describe("cart reducer", () => {
     });
   });
 
+  it("should handle CLEAR_CART", () => {
+    const deleteCartItemAction = {
+      type: types.CLEAR_CART
+    };
+
+    expect(
+      reducer(
+        {
+          cartId: id,
+          cartItems: [
+            { _id: "1232313acd", itm: { price: 20 }, count: 4 },
+            { _id: "2542313acd", itm: { price: 55 }, count: 1 }
+          ],
+          cartLoading: false,
+          totalAmount: 135
+        },
+        deleteCartItemAction
+      )
+    ).toEqual({
+      cartId: id,
+      cartItems: [],
+      cartLoading: false,
+      totalAmount: 0
+    });
+  });
+
   it("should handle ADD_TO_CART", () => {
     const addCartItemAction = {
       type: types.ADD_TO_CART,

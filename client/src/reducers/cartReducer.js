@@ -73,6 +73,7 @@ export default function(state = initialState, action) {
   if (detail.cartItems.length > 1) {
     var g = detail.cartItems.map(item => {
       detail.totalAmount = detail.totalAmount + item.count * item.itm.price;
+      return null;
     });
   } else if (detail.cartItems.length === 1) {
     detail.totalAmount =

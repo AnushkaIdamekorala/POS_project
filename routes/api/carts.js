@@ -3,12 +3,15 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//Cart Model
+//CART Model
 
 const Cart = require("../../models/Cart");
 const checkAuth = require("../middleware/check-auth");
 const checkUser = require("../middleware/check-user");
 
+//@route GET api/carts/:id
+//@desc get a given CART
+//@access public
 router.get("/:id", checkAuth, checkUser, (req, res) => {
   Cart.findById(req.params.id)
     .populate("items.itm")
@@ -16,6 +19,9 @@ router.get("/:id", checkAuth, checkUser, (req, res) => {
     .catch(err => res.status(404).json({ success: false }));
 });
 
+//@route POST api/carts
+//@desc add an ITEM to a given CART
+//@access public
 router.post("/", checkAuth, checkUser, (req, res) => {
   if (
     req.body.hasOwnProperty("_id") &&
@@ -65,6 +71,9 @@ router.post("/", checkAuth, checkUser, (req, res) => {
   }
 });
 
+//@route PUT api/carts/:id/:itId/:count
+//@desc change count of a ITEM in a given CART
+//@access public
 router.put("/:id/:itId/:count", checkAuth, checkUser, (req, res) => {
   if (!isNaN(req.params.count) && req.params.count >= 0) {
     Cart.updateOne(
@@ -80,6 +89,9 @@ router.put("/:id/:itId/:count", checkAuth, checkUser, (req, res) => {
   }
 });
 
+//@route DELETE api/carts/:id/:itId
+//@desc delete an ITEM in a given CART
+//@access public
 router.delete("/:id/:itId", checkAuth, checkUser, (req, res) => {
   Cart.findById(req.params.id, function(err, cart) {
     if (err) {
@@ -106,6 +118,9 @@ router.delete("/:id/:itId", checkAuth, checkUser, (req, res) => {
   });
 });
 
+//@route DELETE api/carts/:id
+//@desc delete all the ITEMs in a given CART
+//@access public
 router.delete("/:id", checkAuth, checkUser, (req, res) => {
   Cart.findById(req.params.id, function(err, cart) {
     if (err) {

@@ -268,3 +268,70 @@ describe("clearCart cartActions", () => {
     });
   });
 });
+
+describe("setCart cartActions", () => {
+  beforeEach(function() {
+    moxios.install();
+  });
+
+  afterEach(function() {
+    moxios.uninstall();
+  });
+
+  test("correctly", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({});
+    });
+    let id = "124312adc322";
+
+    const expectedActions = [
+      {
+        payload: id,
+        type: types.SET_CART_ID
+      }
+    ];
+
+    const store = mockStore({ cartItems: [], total: 0, cartLoading: false });
+
+    store.dispatch(actions.setCart(id));
+    // return of async actions
+    expect(store.getActions()).toEqual(expectedActions);
+  });
+});
+
+describe("submitOrder cartActions", () => {
+  beforeEach(function() {
+    moxios.install();
+  });
+
+  afterEach(function() {
+    moxios.uninstall();
+  });
+
+  test("correctly", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 204
+      });
+    });
+
+    let cartId = "342234a3c3b5f34";
+    let totalAmount = 2344;
+
+    const expectedActions = [
+      {
+        payload: { id: cartId, total: totalAmount },
+        type: types.SUBMIT_CART
+      }
+    ];
+
+    const store = mockStore({ cartItems: [], total: 0, cartLoading: false });
+
+    return store.dispatch(actions.submitOrder(cartId, totalAmount)).then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});

@@ -5,9 +5,9 @@ const router = express.Router();
 const Item = require("../../models/Item");
 const checkAuth = require("../middleware/check-auth");
 
-//@route GET api/itemss
+//@route GET api/items
 //@desc Get All items
-//@access pUBLIC
+//@access public
 router.get("/", checkAuth, (req, res) => {
   Item.find()
     .sort({ date: -1 })
@@ -15,9 +15,9 @@ router.get("/", checkAuth, (req, res) => {
     .catch(err => res.status(404).json({ success: false }));
 });
 
-//@route POST api/itemss
+//@route POST api/items
 //@desc create a ITEM
-//@access pUBLIC
+//@access public
 router.post("/", checkAuth, (req, res) => {
   const newItem = new Item({
     name: req.body.name,
@@ -32,9 +32,9 @@ router.post("/", checkAuth, (req, res) => {
     .catch(err => res.status(400).json({ success: false }));
 });
 
-//@route DELETE api/itemss/:ID
-//@desc dELETE A ITEM
-//@access pUBLIC
+//@route DELETE api/items/:id
+//@desc delete a ITEM
+//@access public
 router.delete("/:id", checkAuth, (req, res) => {
   Item.findById(req.params.id)
     .then(item =>
