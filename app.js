@@ -17,7 +17,15 @@ app.use(bodyParser.json());
 
 //DB config
 
-const db = require("./config/keys").mongoURI;
+//const db = require("./config/keys").mongoURI;
+
+var db = "";
+
+if (process.env.NODE_ENV === "test") {
+  db = "mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb";
+} else {
+  db = require("./config/keys").mongoURI;
+}
 
 //Connect to Mongo
 

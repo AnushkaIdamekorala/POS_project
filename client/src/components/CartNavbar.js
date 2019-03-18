@@ -31,7 +31,7 @@ class CartNavbar extends Component {
                 <li className="nav-item active" />
                 <li className="nav-item ">
                   <button
-                    class="btn btn-warning putha"
+                    className="btn btn-warning putha"
                     type="button"
                     onClick={this.props.clearCart}
                   >

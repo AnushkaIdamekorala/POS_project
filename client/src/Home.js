@@ -47,14 +47,14 @@ class Home extends Component {
   choose(total) {
     if (total === 0) {
       return (
-        <p class="card-text">
-          <i class="fa fa-circle-o-notch fa-spin" aria-hidden="true" />
+        <p className="card-text">
+          <i className="fa fa-circle-o-notch fa-spin" aria-hidden="true" />
           <br /> <h4>Filling cart</h4>
         </p>
       );
     } else {
       return (
-        <p class="card-text">
+        <p className="card-text">
           <br /> <h1>${total}.00</h1>
         </p>
       );
@@ -78,16 +78,16 @@ class Home extends Component {
         <div>
           <NavbarNew />
           <Container>
-            <div class="row">
+            <div className="row">
               <h1>My Orders</h1>
             </div>
-            <div class="container-fluid ">
-              <div class="row">
+            <div className="container-fluid ">
+              <div className="row">
                 {cartSet.map(it => (
-                  <div class="col-sm-3">
-                    <div class="card">
-                      <div class="card-body cross-new">
-                        <div class="col-sm-1 cross-coner">
+                  <div className="col-sm-3" key={it.cartId}>
+                    <div className="card">
+                      <div className="card-body cross-new">
+                        <div className="col-sm-1 cross-coner">
                           <button
                             type="button"
                             className="btn btn-outline-danger btn-xs"
@@ -95,7 +95,7 @@ class Home extends Component {
                             text-align="left"
                           >
                             <i
-                              class="fa fa-window-close  fa-xs"
+                              className="fa fa-window-close  fa-xs"
                               aria-hidden="false"
                             />
                           </button>
@@ -107,8 +107,8 @@ class Home extends Component {
                           width={150}
                           height={150}
                         />
-                        <h2 class="card-title">Table {it.table}</h2>
-                        <h3 class="card-subtitle mb-2 text-muted">
+                        <h2 className="card-title">Table {it.table}</h2>
+                        <h3 className="card-subtitle mb-2 text-muted">
                           Order No-
                           {parseInt(
                             "0x" +
@@ -130,9 +130,9 @@ class Home extends Component {
                     </div>
                   </div>
                 ))}
-                <div class="col-sm-3">
-                  <div class="card">
-                    <div class="card-body">
+                <div className="col-sm-3">
+                  <div className="card">
+                    <div className="card-body">
                       <br />
                       <img
                         className="img-responsive"
@@ -141,11 +141,11 @@ class Home extends Component {
                         width={150}
                         height={150}
                       />
-                      <h2 class="card-title">New Order</h2>
+                      <h2 className="card-title">New Order</h2>
                       <h4>Choose Table</h4>
-                      <div class="row">
-                        <div class="col-sm-3 text-center">{"  "}</div>
-                        <div class="col-sm-6 text-center">
+                      <div className="row">
+                        <div className="col-sm-3 text-center">{"  "}</div>
+                        <div className="col-sm-6 text-center">
                           <input
                             id="tableNo"
                             type="number"

@@ -71,7 +71,7 @@ class ShoppingItems extends Component {
                     <div className="col-12 col-sm-12 col-md-2 text-center">
                       <img
                         className="img-responsive"
-                        src="https://picsum.photos/120/80"
+                        src={it.image}
                         alt={it.name}
                         width={120}
                         height={80}
@@ -123,7 +123,7 @@ class ShoppingItems extends Component {
                           type="button"
                           className="btn btn-outline-success btn-s"
                         >
-                          <i class="fa fa-cart-plus" aria-hidden="true" />
+                          <i className="fa fa-cart-plus" aria-hidden="true" />
                         </button>
                       </div>
                     </div>

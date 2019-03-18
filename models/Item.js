@@ -23,6 +23,10 @@ const ItemSchema = new Schema({
   available: {
     type: Number,
     default: 100
+  },
+  image: {
+    type: String,
+    default: "https://picsum.photos/120/80"
   }
 });
 

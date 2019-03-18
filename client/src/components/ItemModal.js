@@ -18,7 +18,8 @@ class ItemModal extends Component {
     name: "",
     description: "",
     price: 0,
-    available: 100
+    available: 100,
+    image: ""
   };
   toggle = () => {
     this.setState({
@@ -36,7 +37,8 @@ class ItemModal extends Component {
       name: this.state.name,
       description: this.state.description,
       price: this.state.price,
-      available: this.state.available
+      available: this.state.available,
+      image: this.state.image
     };
 
     this.props.addItem(newItem);
@@ -59,7 +61,7 @@ class ItemModal extends Component {
           <ModalBody>
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for="item">Item ekaa</Label>
+                <Label for="item">Item </Label>
                 <Input
                   type="text"
                   name="name"
@@ -89,6 +91,14 @@ class ItemModal extends Component {
                   name="available"
                   id="item_available"
                   placeholder="Add shopping item available"
+                  onChange={this.onChange}
+                />
+                <Label for="item D">Image</Label>
+                <Input
+                  type="text"
+                  name="image"
+                  id="item_image"
+                  placeholder="Add shopping item image"
                   onChange={this.onChange}
                 />
                 <Button color="dark" style={{ marginTop: "2rem" }} block>

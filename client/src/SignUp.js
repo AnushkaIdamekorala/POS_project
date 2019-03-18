@@ -41,61 +41,63 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div class="container madata">
-        <NoEmailModal />
-        <div class="d-flex justify-content-center h-100 ">
-          <div class="cardd">
-            <div class="card-header">
-              <h3>Create an Account</h3>
-            </div>
-            <div class="card-body">
-              <form>
-                <div class="input-group form-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="fas fa-user" />
-                    </span>
+      <div className="container">
+        <div className="container madata">
+          <NoEmailModal />
+          <div className="d-flex justify-content-center h-100 ">
+            <div className="cardd">
+              <div className="card-header">
+                <h3>Create an Account</h3>
+              </div>
+              <div className="card-body">
+                <form>
+                  <div className="input-group form-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="fas fa-user" />
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="email"
+                      placeholder="email"
+                      onChange={this.onChange}
+                    />
                   </div>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="email"
-                    placeholder="email"
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div class="input-group form-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="fas fa-key" />
-                    </span>
+                  <div className="input-group form-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="fas fa-key" />
+                      </span>
+                    </div>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="password"
+                      placeholder="password"
+                      onChange={this.onChange}
+                    />
                   </div>
-                  <input
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    placeholder="password"
-                    onChange={this.onChange}
-                  />
-                </div>
-                <br />
+                  <br />
 
-                <div class="form-group">
-                  <input
-                    type="submit"
-                    value="Sign Up"
-                    class="btn float-right login_btn"
-                    onClick={this.onSubmit}
-                  />
+                  <div className="form-group">
+                    <input
+                      type="submit"
+                      value="Sign Up"
+                      className="btn float-right login_btn"
+                      onClick={this.onSubmit}
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="card-footer">
+                <div className="d-flex justify-content-center links">
+                  Need to go back?
+                  <Link to="/login">
+                    <font color="blue">Login</font>
+                  </Link>
                 </div>
-              </form>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-center links">
-                Need to go back?
-                <Link to="/login">
-                  <font color="blue">Login</font>
-                </Link>
               </div>
             </div>
           </div>

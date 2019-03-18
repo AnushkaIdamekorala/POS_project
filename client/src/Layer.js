@@ -23,10 +23,9 @@ class Layer extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/table" component={App} />
-            <div className="container">
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={SignUp} />
-            </div>
+
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
           </Switch>
         </Router>
       </Provider>

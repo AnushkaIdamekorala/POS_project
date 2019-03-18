@@ -23,7 +23,8 @@ router.post("/", checkAuth, (req, res) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    available: req.body.available
+    available: req.body.available,
+    image: req.body.image
   });
 
   newItem

@@ -4,6 +4,7 @@ import NavbarNew from "./components/NavbarNew";
 
 import CartList from "./components/CartList";
 import ShoppingItems from "./components/ShoppingItems";
+import Spinner from "./components/Spinner";
 
 import ItemModal from "./components/ItemModal";
 import { Container } from "reactstrap";
@@ -37,13 +38,13 @@ class App extends Component {
         <div className="App">
           <NavbarNew />
           <Container>
-            <div class="split left bgimg">
+            <div className="split left bgimg">
               <Container>
                 <ItemModal />
                 <ShoppingItems />
               </Container>
             </div>
-            <div class="split right bgimg2">
+            <div className="split right bgimg2">
               <CartList />
             </div>
           </Container>

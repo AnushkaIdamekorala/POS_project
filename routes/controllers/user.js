@@ -17,7 +17,7 @@ exports.user_signup = (req, res, next) => {
       } else {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           if (err) {
-            return res.status(500).json({
+            return res.status(400).json({
               error: err
             });
           } else {
@@ -35,7 +35,7 @@ exports.user_signup = (req, res, next) => {
                 });
               })
               .catch(err => {
-                res.status(500).json({
+                res.status(400).json({
                   error: err
                 });
               });
@@ -85,7 +85,7 @@ exports.user_login = (req, res, next) => {
 };
 
 exports.user_delete = (req, res, next) => {
-  User.remove({ _id: req.params.userId })
+  User.remove({ email: req.userData.email })
     .exec()
     .then(result => {
       res.status(200).json({

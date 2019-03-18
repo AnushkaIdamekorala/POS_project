@@ -1,19 +1,51 @@
 const request = require("supertest");
 const session = require("supertest-session");
+
+process.env.TEST_SUITE = "spacetime-systems-test";
+process.env.NODE_ENV = "test";
+
 const app = require("../app");
 
 var token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudXNoa2EwNzMxQGdtYWlsLmNvbSIsInVzZXJJZCI6IjVjNmU5ZDFlMjE3NDRlNDQ4ODRlMGYwYyIsImlhdCI6MTU1MTc2OTYzOSwiZXhwIjoxNTUyMzc0NDM5fQ.0H4u3L1AUcTXb9cs5Q2SwxMjaHa4LoHNKbnlp_NIwlw";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwidXNlcklkIjoiNWM4ZGRmMWMxMDQ2MmMxMGU3NmYyNDgxIiwiaWF0IjoxNTUyODAxNTc5LCJleHAiOjE1NTM0MDYzNzl9.Bsxrrz2OJoiv3EG1O2BBmNA8e9VCDxBiy5ig1SbCqzM";
 var carts;
 var items;
 var cartItems;
 beforeAll(async (done, res) => {
   await request(app)
     .post("/api/user/login")
-    .send({ email: "test@test.com", password: "test" })
-    .then(() => {
+    .send({ email: "test@gmail.com", password: "test" })
+    .then(res => {
+      console.log(res.headers["set-cookie"][0][0]);
       done();
     });
+});
+
+describe("POST /user/signup", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .post("/api/user/signu")
+      .send({ email: "newuser@test.com", password: "1234" });
+    expect(response.status).toEqual(201);
+  });
+});
+
+describe("POST /user/signup", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .post("/api/user/signup")
+      .send({ email: "test@test.com", password: "1234" });
+    expect(response.status).toEqual(409);
+  });
+});
+
+describe("POST /user/signup", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .post("/api/user/signup")
+      .send({ email: "test", password: "1234" });
+    expect(response.status).toEqual(400);
+  });
 });
 
 describe("POST /user/login", () => {
@@ -297,6 +329,76 @@ describe("DELETE /carts/:id", () => {
       .expect(204);
   });
 });
+
+describe("POST /items", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .post(`/api/items`)
+      .send({
+        token: token,
+        name: "Important",
+        description: "Valuable thing",
+        price: 5,
+        available: 200
+      })
+      .expect(201);
+  });
+});
+
+describe("GET /items", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .get("/api/items")
+      .send({
+        token: token
+      })
+      .expect(200)
+      .then(res => {
+        items = res.body;
+      });
+  });
+});
+
+describe("DELETE /items/:id", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .delete(`/api/items/${items[0]._id}`)
+      .send({
+        token: token
+      })
+      .expect(200);
+  });
+});
+
+describe("DELETE /items/:id", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .delete(`/api/items/234234`)
+      .send({
+        token: token
+      })
+      .expect(404);
+  });
+});
+
+/*
+
+describe("DELETE /user/deleteuser", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .delete("api/user/deleteuser")
+      .send({
+        token: token
+      })
+      .expect(200);
+  });
+});
+
+*?
+
+router.delete("/deleteuser"
+
+
 
 module.exports = {
   testEnvironment: "node"

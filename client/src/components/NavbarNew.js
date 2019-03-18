@@ -34,7 +34,7 @@ class NavbarNew extends Component {
             <li className="nav-item active" />
             <li className="nav-item ">
               <button
-                class="btn btn-outline-danger putha"
+                className="btn btn-outline-danger putha"
                 type="button"
                 onClick={this.onSignOutClick.bind(this)}
               >

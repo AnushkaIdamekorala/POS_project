@@ -47,11 +47,14 @@ router.post("/", checkAuth, checkUser, (req, res) => {
         }
         if (flag) {
           cart.items[fI].count = req.body.count;
-          cart.save().then(function() {
-            Cart.findById(req.body._id)
-              .populate("items.itm")
-              .then(item => res.status(200).json(item));
-          });
+          cart
+            .save()
+            .then(function() {
+              Cart.findById(req.body._id)
+                .populate("items.itm")
+                .then(item => res.status(200).json(item));
+            })
+            .catch(err => res.status(404).json({ success: false }));
         } else {
           let pushItm = { itm: req.body.itm, count: req.body.count };
           cart.items.push(pushItm);
@@ -62,7 +65,7 @@ router.post("/", checkAuth, checkUser, (req, res) => {
                 .populate("items.itm")
                 .then(item => res.status(200).json(item));
             })
-            .catch(err => res.status(400).json({ success: false }));
+            .catch(err => res.status(404).json({ success: false }));
         }
       }
     });

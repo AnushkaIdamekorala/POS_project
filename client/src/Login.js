@@ -48,63 +48,65 @@ class Login extends Component {
     document.body.style.backgroundImage =
       "url('https://cdn.asiatatler.com/asiatatler/i/hk/2019/01/11160759-seafood-selection-dinner_article_1499x1000.jpg')";
     return (
-      <div className="container madata">
-        <WarningModal />
-        <div className="d-flex justify-content-center h-100 ">
-          <div className="cardd">
-            <div className="card-header">
-              <h3>Sign In</h3>
-            </div>
-            <div className="card-body">
-              <form>
-                <div className="input-group form-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fas fa-user" />
-                    </span>
+      <div className="container">
+        <div className="container madata">
+          <WarningModal />
+          <div className="d-flex justify-content-center h-100 ">
+            <div className="cardd">
+              <div className="card-header">
+                <h3>Sign In</h3>
+              </div>
+              <div className="card-body">
+                <form>
+                  <div className="input-group form-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="fas fa-user" />
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="email"
+                      placeholder="email"
+                      onChange={this.onChange}
+                    />
                   </div>
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="email"
-                    placeholder="email"
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="input-group form-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fas fa-key" />
-                    </span>
+                  <div className="input-group form-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="fas fa-key" />
+                      </span>
+                    </div>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="password"
+                      placeholder="password"
+                      onChange={this.onChange}
+                    />
                   </div>
-                  <input
-                    type="password"
-                    className="form-control"
-                    name="password"
-                    placeholder="password"
-                    onChange={this.onChange}
-                  />
+                  <div className="row align-items-center remember">
+                    <input type="checkbox" />
+                    Remember Me
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="submit"
+                      value="Login"
+                      className="btn float-right login_btn"
+                      onClick={this.onSubmit}
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="card-footer">
+                <div className="d-flex justify-content-center links">
+                  Don't have an account?
+                  <Link to="/signup">
+                    <font color="blue">SignUp</font>
+                  </Link>
                 </div>
-                <div className="row align-items-center remember">
-                  <input type="checkbox" />
-                  Remember Me
-                </div>
-                <div className="form-group">
-                  <input
-                    type="submit"
-                    value="Login"
-                    className="btn float-right login_btn"
-                    onClick={this.onSubmit}
-                  />
-                </div>
-              </form>
-            </div>
-            <div className="card-footer">
-              <div className="d-flex justify-content-center links">
-                Don't have an account?
-                <Link to="/signup">
-                  <font color="blue">SignUp</font>
-                </Link>
               </div>
             </div>
           </div>
