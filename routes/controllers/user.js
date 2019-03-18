@@ -84,10 +84,11 @@ exports.user_login = (req, res, next) => {
     });
 };
 
-exports.user_delete = (req, res, next) => {
+exports.user_delete = (req, res) => {
   User.remove({ email: req.userData.email })
     .exec()
     .then(result => {
+      console.log("deleted" + req.userData.email);
       res.status(200).json({
         message: "User deleted"
       });

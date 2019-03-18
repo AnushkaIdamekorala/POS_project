@@ -128,6 +128,6 @@ router.delete("/removecart/:id", checkAuth, checkUser, (req, res) => {
 //@route DELETE api/user/:userId
 //@desc  delete a USER
 //@access public
-/*  router.delete("/deleteuser", checkAuth, UserController.user_delete);*/
+router.delete("/deleteuser", checkAuth, UserController.user_delete);
 
 module.exports = router;

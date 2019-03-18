@@ -24,7 +24,8 @@ var db = "";
 if (process.env.NODE_ENV === "test") {
   db = "mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb";
 } else {
-  db = require("./config/keys").mongoURI;
+  /// db = require("./config/keys").mongoURI;
+  db = "mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb";
 }
 
 //Connect to Mongo

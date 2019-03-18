@@ -16,18 +16,8 @@ beforeAll(async (done, res) => {
     .post("/api/user/login")
     .send({ email: "test@gmail.com", password: "test" })
     .then(res => {
-      console.log(res.headers["set-cookie"][0][0]);
       done();
     });
-});
-
-describe("POST /user/signup", () => {
-  test("should respond as expected", async () => {
-    const response = await request(app)
-      .post("/api/user/signu")
-      .send({ email: "newuser@test.com", password: "1234" });
-    expect(response.status).toEqual(201);
-  });
 });
 
 describe("POST /user/signup", () => {
@@ -381,7 +371,65 @@ describe("DELETE /items/:id", () => {
   });
 });
 
+describe("POST /user/signup", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .post("/api/user/signup")
+      .send({ email: "newuser11@test.com", password: "1234" })
+      .expect(201);
+  });
+});
+
+const token1 =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ld3VzZXIxMUB0ZXN0LmNvbSIsInVzZXJJZCI6IjVjOGYxZmU4YWNhN2ExNGNkMjI1MDRkNiIsImlhdCI6MTU1Mjg4ODI3NSwiZXhwIjoxNTUzNDkzMDc1fQ.DyW_gYbVz3RtMGoPpVW9h2m4nYwiEantA1sNvER0YmI";
+
+describe("DELETE /user/deleteuser", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .delete("/api/user/deleteuser")
+      .send({ token: token1 })
+      .expect(200);
+  });
+});
+
 /*
+
+describe("DELETE /user/deleteuser", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .post("/api/user/login")
+      .send({ email: "newuser11@test.com", password: "1234" })
+      .expect("set-cookie", /token/)
+      .expect(200)
+      .end(async (err, res) => {
+        const response = await request(app)
+          .delete("/api/user/deleteuser")
+          .set("Cookie", res.headers["set-cookie"])
+          .send()
+          .expect(400)
+          .end((err, res2) => {
+            if (err) {
+              console.log("error", err);
+              return;
+            } else {
+              console.log("Test 3 worked");
+            }
+          });
+      });
+  });
+}); */
+/*
+describe("POST /user/signup", () => {
+  test("should respond as expected", async () => {
+    const response = await request(app)
+      .post("/api/user/signup")
+      .send({ email: "newuser11@test.com", password: "1234" })
+      .expect(201);
+  });
+});*/
+
+/*
+
 
 describe("DELETE /user/deleteuser", () => {
   test("should respond as expected", async () => {
@@ -394,11 +442,7 @@ describe("DELETE /user/deleteuser", () => {
   });
 });
 
-*?
-
-router.delete("/deleteuser"
-
-
+*/
 
 module.exports = {
   testEnvironment: "node"

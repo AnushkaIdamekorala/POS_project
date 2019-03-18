@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.11% </span>
+        <span class="strong">89.47% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>8/19</span>
+        <span class='fraction'>17/19</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>8/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">44.44% </span>
+        <span class="strong">88.89% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>8/18</span>
+        <span class='fraction'>16/18</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,14 +104,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -120,23 +131,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -150,18 +150,18 @@ const checkAuth = require("../middleware/check-auth");
 //@route GET api/items
 //@desc Get All items
 //@access public
-router.get("/", checkAuth, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  Item.find()</span>
+router.get("/", checkAuth, (req, res) =&gt; {
+  Item.find()
     .sort({ date: -1 })
-    .then(<span class="fstat-no" title="function not covered" >it</span>ems =&gt; <span class="cstat-no" title="statement not covered" >res.status(200).json(items))</span>
+    .then(items =&gt; res.status(200).json(items))
     .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(404).json({ success: false }))</span>;
 });
 &nbsp;
 //@route POST api/items
 //@desc create a ITEM
 //@access public
-router.post("/", checkAuth, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const newItem = <span class="cstat-no" title="statement not covered" >new Item({</span>
+router.post("/", checkAuth, (req, res) =&gt; {
+  const newItem = new Item({
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
@@ -169,21 +169,21 @@ router.post("/", checkAuth, <span class="fstat-no" title="function not covered" 
     image: req.body.image
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  newItem</span>
+  newItem
     .save()
-    .then(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >res.status(201).json(item))</span>
+    .then(item =&gt; res.status(201).json(item))
     .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(400).json({ success: false }))</span>;
 });
 &nbsp;
 //@route DELETE api/items/:id
 //@desc delete a ITEM
 //@access public
-router.delete("/:id", checkAuth, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  Item.findById(req.params.id)</span>
-    .then(<span class="fstat-no" title="function not covered" >it</span>em =&gt;
-<span class="cstat-no" title="statement not covered" >      item.remove().then(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >res.status(200).json({ success: true }))</span></span>
+router.delete("/:id", checkAuth, (req, res) =&gt; {
+  Item.findById(req.params.id)
+    .then(item =&gt;
+      item.remove().then(() =&gt; res.status(200).json({ success: true }))
     )
-    .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(404).json({ success: false }))</span>;
+    .catch(err =&gt; res.status(404).json({ success: false }));
 });
 &nbsp;
 module.exports = router;
@@ -193,7 +193,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Mar 14 2019 17:43:08 GMT+0530 (+0530)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 18 2019 13:06:52 GMT+0530 (+0530)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
