@@ -2,11 +2,14 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+const Schema = mongoose.Schema;
+
 const User = require("../../models/User");
+const Cart = require("../../models/Cart");
 
 const JWT_KEY = require("../../config/keys").JWT_KEY;
 
-exports.user_signup = (req, res, next) => {
+exports.user_signup = (req, res) => {
   User.find({ email: req.body.email })
     .exec()
     .then(user => {
@@ -45,7 +48,72 @@ exports.user_signup = (req, res, next) => {
     });
 };
 
-exports.user_login = (req, res, next) => {
+exports.user_signout = (req, res) => {
+  res
+    .clearCookie("token")
+    .status(200)
+    .json({ sucess: true });
+};
+
+exports.user_change_total = (req, res) => {
+  User.updateOne(
+    { email: req.userData.email, "orders.cartId": req.params.id },
+    { $set: { "orders.$.totalAmount": req.params.total } }
+  )
+    .then(() => res.status(200).json({ success: true }))
+    .catch(() => res.status(404).json({ success: false }));
+};
+
+exports.user_create_order = (req, res) => {
+  User.findOne({ email: req.userData.email }, (err, user) => {
+    if (err) {
+      console.log(err);
+      return res.status(404).json({ success: false });
+    } else if (isNaN(req.params.table)) {
+      res.status(400).json({ success: false });
+    } else {
+      const newCart = new Cart({
+        _id: new mongoose.Types.ObjectId(),
+        items: []
+      });
+      newCart.save();
+      user.cartSet.push(newCart._id);
+      user.orders.push({
+        cartId: newCart._id,
+        table: req.params.table,
+        totalAmount: 0
+      });
+      user.save().then(user => res.status(201).json(user.orders));
+    }
+    /* istanbul ignore next */
+  }).catch(err => res.status(404).json({ success: false }));
+};
+
+exports.user_delete_order = (req, res) => {
+  User.findOne({ email: req.userData.email }, (err, user) => {
+    if (err) {
+      /* istanbul ignore next */
+      console.log(err);
+      /* istanbul ignore next */
+      res.status(500);
+      return;
+    } else {
+      Cart.findOne({ _id: req.params.id }, (err, cart) => {
+        cart.remove().then(() => {
+          User.updateOne(
+            { email: req.userData.email },
+            { $pull: { orders: { cartId: req.params.id } } }
+          ).then(() => {
+            user.save().then(() => res.status(200).json({ success: true }));
+          });
+        });
+        /* istanbul ignore next */
+      }).catch(err => res.status(404).json({ success: false }));
+    }
+  });
+};
+
+exports.user_login = (req, res) => {
   User.find({ email: req.body.email })
     .exec()
     .then(user => {
@@ -56,6 +124,7 @@ exports.user_login = (req, res, next) => {
       }
       bcrypt.compare(req.body.password, user[0].password, (err, result) => {
         if (err) {
+          /* istanbul ignore next */
           return res.status(401).json({
             message: "Auth failed"
           });
@@ -77,7 +146,9 @@ exports.user_login = (req, res, next) => {
       });
     })
     .catch(err => {
+      /* istanbul ignore next */
       console.log(err);
+      /* istanbul ignore next */
       res.status(500).json({
         error: err
       });
@@ -94,7 +165,9 @@ exports.user_delete = (req, res) => {
       });
     })
     .catch(err => {
+      /* istanbul ignore next */
       console.log(err);
+      /* istanbul ignore next */
       res.status(500).json({
         error: err
       });

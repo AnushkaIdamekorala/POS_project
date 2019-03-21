@@ -35,3 +35,7 @@ The deployed web app reached from https://vast-cove-57986.herokuapp.com
 ### Documentation
 
 Swagger API documentation can be reached through https://app.swaggerhub.com/apis-docs/AnushkaIdamekorala/Mini_POS/1.0.0
+
+### Sample Account
+
+Using email:- 'anushka0731@gmail.com' password:- '1234' You can log into a sample account.(You can also create a new account)

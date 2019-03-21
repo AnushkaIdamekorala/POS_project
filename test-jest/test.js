@@ -6,8 +6,7 @@ process.env.NODE_ENV = "test";
 
 const app = require("../app");
 
-var token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwidXNlcklkIjoiNWM4ZGRmMWMxMDQ2MmMxMGU3NmYyNDgxIiwiaWF0IjoxNTUyODAxNTc5LCJleHAiOjE1NTM0MDYzNzl9.Bsxrrz2OJoiv3EG1O2BBmNA8e9VCDxBiy5ig1SbCqzM";
+var token;
 var carts;
 var items;
 var cartItems;
@@ -16,6 +15,10 @@ beforeAll(async (done, res) => {
     .post("/api/user/login")
     .send({ email: "test@gmail.com", password: "test" })
     .then(res => {
+      let temp = res.header["set-cookie"][0].split(";");
+      temp = temp[0].split("=");
+      token = temp[1];
+      console.log(temp[1]);
       done();
     });
 });
@@ -30,7 +33,7 @@ describe("POST /user/signup", () => {
 });
 
 describe("POST /user/signup", () => {
-  test("should respond as expected", async () => {
+  test("should handle user signup", async () => {
     const response = await request(app)
       .post("/api/user/signup")
       .send({ email: "test", password: "1234" });
@@ -39,7 +42,7 @@ describe("POST /user/signup", () => {
 });
 
 describe("POST /user/login", () => {
-  test("should respond as expected", async () => {
+  test("should handle user login", async () => {
     const response = await request(app)
       .post("/api/user/login")
       .send({ email: "wrongtest@test.com", password: "test" });
@@ -47,8 +50,17 @@ describe("POST /user/login", () => {
   });
 });
 
+describe("POST /user/login", () => {
+  test("should handle user login", async () => {
+    const response = await request(app)
+      .post("/api/user/login")
+      .send({ email: "test@test.com", password: "5533" });
+    expect(response.status).toEqual(401);
+  });
+});
+
 describe("POST /user/checkAuth", () => {
-  test("should respond as expected", async () => {
+  test("should handle authentication check", async () => {
     const response = await request(app)
       .post("/api/user/checkAuth")
       .send({ token: token });
@@ -57,7 +69,7 @@ describe("POST /user/checkAuth", () => {
 });
 
 describe("POST /user/signout", () => {
-  test("should respond as expected", async () => {
+  test("should handle signout", async () => {
     const response = await request(app)
       .post("/api/user/signout")
       .send({ token: token });
@@ -65,14 +77,14 @@ describe("POST /user/signout", () => {
   });
 });
 describe("POST /user/checkauth", () => {
-  test("should respond as expected", async () => {
+  test("should handle authentication check", async () => {
     const response = await request(app).post("/api/user/checkAuth");
     expect(response.status).toEqual(401);
   });
 });
 
 describe("GET /user/create/:table", () => {
-  test("should respond as expected", async () => {
+  test("should handle creating an order ", async () => {
     const response = await request(app)
       .get("/api/user/create/7")
       .send({
@@ -83,7 +95,7 @@ describe("GET /user/create/:table", () => {
 });
 
 describe("GET /user/create/:table", () => {
-  test("should respond as expected", async () => {
+  test("should handle creating an order", async () => {
     const response = await request(app)
       .get("/api/user/create/sf")
       .send({
@@ -97,7 +109,7 @@ describe("GET /user/create/:table", () => {
 });
 
 describe("GET /user/what", () => {
-  test("should respond as expected", async () => {
+  test("should handle getting orders", async () => {
     const response = await request(app)
       .get("/api/user/what")
       .send({
@@ -111,7 +123,7 @@ describe("GET /user/what", () => {
 });
 
 describe("DELETE /user/removecart/:id", () => {
-  test("should respond as expected", async () => {
+  test("should handle deleting an order", async () => {
     const response = await request(app)
       .delete(`/api/user/removecart/${carts[0].cartId}`)
       .send({
@@ -122,7 +134,7 @@ describe("DELETE /user/removecart/:id", () => {
 });
 
 describe("DELETE /user/removecart/:id", () => {
-  test("should respond as expected", async () => {
+  test("should handle deleting an order", async () => {
     const response = await request(app)
       .delete("/api/user/removecart/56776")
       .send({
@@ -133,7 +145,7 @@ describe("DELETE /user/removecart/:id", () => {
 });
 
 describe("GET /items", () => {
-  test("should respond as expected", async () => {
+  test("should handle taking the item list", async () => {
     const response = await request(app)
       .get("/api/items")
       .send({
@@ -147,7 +159,7 @@ describe("GET /items", () => {
 });
 
 describe("GET /items", () => {
-  test("should respond as expected", async () => {
+  test("should handle taking the item list", async () => {
     const response = await request(app)
       .get("/api/items")
       .expect(401);
@@ -155,7 +167,7 @@ describe("GET /items", () => {
 });
 
 describe("POST /carts", () => {
-  test("should respond as expected", async () => {
+  test("should handle adding item to cart", async () => {
     const response = await request(app)
       .post("/api/carts")
       .send({
@@ -169,7 +181,7 @@ describe("POST /carts", () => {
 });
 
 describe("POST /carts", () => {
-  test("should respond as expected", async () => {
+  test("should handle adding item to cart", async () => {
     const response = await request(app)
       .post("/api/carts")
       .send({
@@ -181,7 +193,7 @@ describe("POST /carts", () => {
 });
 
 describe("POST /carts", () => {
-  test("should respond as expected", async () => {
+  test("should handle adding item to cart", async () => {
     const response = await request(app)
       .post("/api/carts")
       .send({
@@ -194,8 +206,21 @@ describe("POST /carts", () => {
   });
 });
 
+describe("POST /carts", () => {
+  test("should handle adding item to cart", async () => {
+    const response = await request(app)
+      .post("/api/carts")
+      .send({
+        token: token,
+        _id: carts[1].cartId,
+        itm: items[0]._id
+      })
+      .expect(400);
+  });
+});
+
 describe("PUT /:id/:itId/:count", () => {
-  test("should respond as expected", async () => {
+  test("should handle changing count of a item", async () => {
     const response = await request(app)
       .put(`/api/carts/${carts[1].cartId}/${items[0]._id}/${10}`)
       .send({
@@ -206,7 +231,7 @@ describe("PUT /:id/:itId/:count", () => {
 });
 
 describe("PUT /:id/:itId/:count", () => {
-  test("should respond as expected", async () => {
+  test("should handle changing count of a item", async () => {
     const response = await request(app)
       .put(`/api/carts/${carts[1].cartId}/${items[3]._id}/asc`)
       .send({
@@ -216,8 +241,8 @@ describe("PUT /:id/:itId/:count", () => {
   });
 });
 
-describe("PUT /:id/:itId/:count", () => {
-  test("should respond as expected", async () => {
+describe("PUT /:id/:itemId/:count", () => {
+  test("should handle changing count of a item", async () => {
     const response = await request(app)
       .put(`/api/carts/${carts[1].cartId}/23423/${10}`)
       .send({
@@ -228,7 +253,7 @@ describe("PUT /:id/:itId/:count", () => {
 });
 
 describe("POST /carts", () => {
-  test("should respond as expected", async () => {
+  test("should handle add item to cart", async () => {
     const response = await request(app)
       .post("/api/carts")
       .send({
@@ -242,7 +267,7 @@ describe("POST /carts", () => {
 });
 
 describe("POST /carts", () => {
-  test("should respond as expected", async () => {
+  test("should handle add item to cart", async () => {
     const response = await request(app)
       .post("/api/carts")
       .send({
@@ -256,7 +281,7 @@ describe("POST /carts", () => {
 });
 
 describe("GET /carts/:id", () => {
-  test("should respond as expected", async () => {
+  test("should handle get items in cart", async () => {
     const response = await request(app)
       .get(`/api/carts/${carts[1].cartId}`)
       .send({
@@ -270,7 +295,7 @@ describe("GET /carts/:id", () => {
 });
 
 describe("GET /carts/:id", () => {
-  test("should respond as expected", async () => {
+  test("should handle get items in cart", async () => {
     const response = await request(app)
       .get("/api/carts/5c78d7f8ec99731ab84c10ef")
       .send({
@@ -281,14 +306,14 @@ describe("GET /carts/:id", () => {
 });
 
 describe("GET /carts/:id", () => {
-  test("should respond as expected", async () => {
+  test("should handle get items in cart", async () => {
     const response = await request(app).get("/api/carts/123");
     expect(response.status).toEqual(401);
   });
 });
 
 describe("DELETE /carts/:id/:itId", () => {
-  test("should respond as expected", async () => {
+  test("should handle delete item from cart", async () => {
     const response = await request(app)
       .delete(`/api/carts/${carts[1].cartId}/${cartItems.items[1]._id}`)
       .send({
@@ -299,7 +324,7 @@ describe("DELETE /carts/:id/:itId", () => {
 });
 
 describe("DELETE /carts/:id/:itId", () => {
-  test("should respond as expected", async () => {
+  test("should handle delete item from cart", async () => {
     const response = await request(app)
       .delete(`/api/carts/${carts[1].cartId}/${cartItems.items[1]._id}`)
       .send({
@@ -310,7 +335,7 @@ describe("DELETE /carts/:id/:itId", () => {
 });
 
 describe("DELETE /carts/:id", () => {
-  test("should respond as expected", async () => {
+  test("should rhandle clearing cart", async () => {
     const response = await request(app)
       .delete(`/api/carts/${carts[1].cartId}`)
       .send({
@@ -321,7 +346,7 @@ describe("DELETE /carts/:id", () => {
 });
 
 describe("POST /items", () => {
-  test("should respond as expected", async () => {
+  test("should handle add item to item list", async () => {
     const response = await request(app)
       .post(`/api/items`)
       .send({
@@ -336,7 +361,7 @@ describe("POST /items", () => {
 });
 
 describe("GET /items", () => {
-  test("should respond as expected", async () => {
+  test("should handle getting item list", async () => {
     const response = await request(app)
       .get("/api/items")
       .send({
@@ -350,7 +375,7 @@ describe("GET /items", () => {
 });
 
 describe("DELETE /items/:id", () => {
-  test("should respond as expected", async () => {
+  test("should halde deleting a item from itemlist", async () => {
     const response = await request(app)
       .delete(`/api/items/${items[0]._id}`)
       .send({
@@ -361,7 +386,7 @@ describe("DELETE /items/:id", () => {
 });
 
 describe("DELETE /items/:id", () => {
-  test("should respond as expected", async () => {
+  test("should handle deleting a item from item list", async () => {
     const response = await request(app)
       .delete(`/api/items/234234`)
       .send({
@@ -372,7 +397,7 @@ describe("DELETE /items/:id", () => {
 });
 
 describe("POST /user/signup", () => {
-  test("should respond as expected", async () => {
+  test("should handle creating an acoount", async () => {
     const response = await request(app)
       .post("/api/user/signup")
       .send({ email: "newuser11@test.com", password: "1234" })
@@ -380,14 +405,26 @@ describe("POST /user/signup", () => {
   });
 });
 
-const token1 =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ld3VzZXIxMUB0ZXN0LmNvbSIsInVzZXJJZCI6IjVjOGYxZmU4YWNhN2ExNGNkMjI1MDRkNiIsImlhdCI6MTU1Mjg4ODI3NSwiZXhwIjoxNTUzNDkzMDc1fQ.DyW_gYbVz3RtMGoPpVW9h2m4nYwiEantA1sNvER0YmI";
+describe("POST /user/login", () => {
+  test("should handle user login", async () => {
+    const response = await request(app)
+      .post("/api/user/login")
+      .send({ email: "newuser11@test.com", password: "1234" })
+      .expect(200)
+      .then(res => {
+        let temp = res.header["set-cookie"][0].split(";");
+        temp = temp[0].split("=");
+        token = temp[1];
+        console.log(temp[1]);
+      });
+  });
+});
 
 describe("DELETE /user/deleteuser", () => {
-  test("should respond as expected", async () => {
+  test("should handle deleting an account", async () => {
     const response = await request(app)
       .delete("/api/user/deleteuser")
-      .send({ token: token1 })
+      .send({ token: token })
       .expect(200);
   });
 });
