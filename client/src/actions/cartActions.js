@@ -10,7 +10,7 @@ import {
   SUBMIT_CART
 } from "./types";
 
-var cart = "5c6a54b1469a5113e554c990";
+var cart = "";
 
 export const getCart = () => dispatch => {
   dispatch(setCartLoading());
