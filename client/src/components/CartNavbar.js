@@ -15,13 +15,17 @@ class CartNavbar extends Component {
   };
 
   render() {
+    const { cartId } = this.props.cart;
     return (
       <div>
         <Navbar color="dark" dark expand="sm" className="mb-5 sticky-top">
           <Container>
             <NavbarBrand href="/">
               <i className="fa fa-shopping-cart" aria-hidden="true" />
-              {"   Shopping Cart"}
+              {"   Shopping Cart for No." +
+                parseInt(
+                  "0x" + cartId.substring(cartId.length - 3, cartId.length)
+                )}
             </NavbarBrand>
             <div
               className="collapse navbar-collapse"
@@ -51,7 +55,9 @@ class CartNavbar extends Component {
 
 CartNavbar.propTypes = {};
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  cart: state.cart
+});
 
 export default connect(
   mapStateToProps,

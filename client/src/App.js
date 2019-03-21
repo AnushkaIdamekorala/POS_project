@@ -11,6 +11,7 @@ import { Container } from "reactstrap";
 
 import { connect } from "react-redux";
 import { checkAuth, userCarts } from "./actions/userActions";
+import { getCart } from "./actions/cartActions";
 
 import PropTypes from "prop-types";
 
@@ -27,6 +28,7 @@ class App extends Component {
   }
   componentWillMount() {
     this.props.checkAuth();
+    this.props.getCart();
   }
 
   render() {
@@ -34,6 +36,14 @@ class App extends Component {
       this.props.history.push("/login");
       return null;
     } else {
+      const { cartLoading } = this.props.cart;
+      var element;
+      if (cartLoading) {
+        element = <Spinner />;
+      } else {
+        element = <CartList />;
+      }
+
       return (
         <div className="App">
           <NavbarNew />
@@ -44,9 +54,7 @@ class App extends Component {
                 <ShoppingItems />
               </Container>
             </div>
-            <div className="split right bgimg2">
-              <CartList />
-            </div>
+            <div className="split right bgimg2">{element}</div>
           </Container>
         </div>
       );
@@ -60,10 +68,11 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  cart: state.cart
 });
 
 export default connect(
   mapStateToProps,
-  { checkAuth, userCarts }
+  { checkAuth, userCarts, getCart }
 )(App);

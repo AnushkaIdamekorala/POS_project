@@ -18,7 +18,7 @@ beforeAll(async (done, res) => {
       let temp = res.header["set-cookie"][0].split(";");
       temp = temp[0].split("=");
       token = temp[1];
-      console.log(temp[1]);
+
       done();
     });
 });
@@ -415,7 +415,6 @@ describe("POST /user/login", () => {
         let temp = res.header["set-cookie"][0].split(";");
         temp = temp[0].split("=");
         token = temp[1];
-        console.log(temp[1]);
       });
   });
 });

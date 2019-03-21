@@ -18,9 +18,7 @@ import CartNavbar from "./CartNavbar";
 class CartList extends Component {
   componentDidMount() {}
 
-  componentWillMount() {
-    this.props.getCart();
-  }
+  componentWillMount() {}
 
   onDeleteClick = (id, name) => {
     this.props.deleteFromCart(id);
