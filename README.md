@@ -1,3 +1,8 @@
+## Overview
+
+This is the code base for a Point of Sale web application which is deployed online.Front end is built using React-Redux(in client folder) and nodeJs framework is used for back end development with express for handle htttp requests.And mongoDB is used for Database.
+Users can create accounts and login to certain account.In home page user can see all of his orders and generate orders for required table.When user selects a certain order user can see order view where user can edit the order.
+
 ## Available Scripts
 
 In the project directory, you can run:
