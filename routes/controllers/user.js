@@ -156,8 +156,24 @@ exports.user_login = (req, res) => {
 };
 
 exports.user_delete = (req, res) => {
-  User.remove({ email: req.userData.email })
+  User.find({ email: req.userData.email })
     .exec()
+    .then(user => {
+      var itemsOrder = user[0].orders;
+      console.log(itemsOrder);
+      itemsOrder.forEach(order => {
+        console.log(order);
+        Cart.findOne({ _id: order.cartId }, (err, cart) => {
+          if (cart !== null) {
+            cart.remove();
+          }
+          return;
+        });
+      });
+
+      return user;
+    })
+    .then(user => user[0].remove())
     .then(result => {
       console.log("deleted" + req.userData.email);
       res.status(200).json({
@@ -173,3 +189,24 @@ exports.user_delete = (req, res) => {
       });
     });
 };
+
+/*
+exports.user_deleted = (req, res) => {
+  User.remove({ email: req.userData.email })
+    .exec()
+    .then(result => {
+      console.log("deleted" + req.userData.email);
+      res.status(200).json({
+        message: "User deleted"
+      });
+    })
+    .catch(err => {
+      
+      console.log(err);
+     
+      res.status(500).json({
+        error: err
+      });
+    });
+};
+*/

@@ -22,7 +22,8 @@ var db = "";
 if (process.env.NODE_ENV === "test") {
   db = require("./config/keys").localURI;
 } else {
-  db = require("./config/keys").mongoURI;
+  db = require("./config/keys").localURI;
+  // db = require("./config/keys").mongoURI;
 }
 
 //Connect to Mongo

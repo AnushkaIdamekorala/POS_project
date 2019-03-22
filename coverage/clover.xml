@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1553234643332" clover="3.2.0">
-  <project timestamp="1553234643332" name="All files">
-    <metrics statements="247" coveredstatements="221" conditionals="53" coveredconditionals="44" methods="70" coveredmethods="51" elements="370" coveredelements="316" complexity="0" loc="247" ncloc="247" packages="6" files="13" classes="13"/>
+<coverage generated="1553246988975" clover="3.2.0">
+  <project timestamp="1553246988975" name="All files">
+    <metrics statements="261" coveredstatements="227" conditionals="55" coveredconditionals="44" methods="77" coveredmethods="53" elements="393" coveredelements="324" complexity="0" loc="261" ncloc="261" packages="6" files="13" classes="13"/>
     <package name="fullStack">
       <metrics statements="26" coveredstatements="21" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="1"/>
       <file name="app.js" path="/home/anushkai/Desktop/Training/code/redux/fullStack/app.js">
@@ -21,17 +21,17 @@
         <line num="22" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="23" count="1" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
-        <line num="41" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="43" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="42" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="44" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
       </file>
     </package>
     <package name="fullStack.config">
@@ -126,7 +126,7 @@
       </file>
     </package>
     <package name="fullStack.routes.controllers">
-      <metrics statements="132" coveredstatements="113" conditionals="39" coveredconditionals="32" methods="59" coveredmethods="44"/>
+      <metrics statements="146" coveredstatements="119" conditionals="41" coveredconditionals="32" methods="66" coveredmethods="46"/>
       <file name="carts.js" path="/home/anushkai/Desktop/Training/code/redux/fullStack/routes/controllers/carts.js">
         <metrics statements="57" coveredstatements="50" conditionals="23" coveredconditionals="20" methods="22" coveredmethods="17"/>
         <line num="1" count="1" type="stmt"/>
@@ -206,7 +206,7 @@
         <line num="31" count="1" type="stmt"/>
       </file>
       <file name="user.js" path="/home/anushkai/Desktop/Training/code/redux/fullStack/routes/controllers/user.js">
-        <metrics statements="60" coveredstatements="50" conditionals="16" coveredconditionals="12" methods="27" coveredmethods="19"/>
+        <metrics statements="74" coveredstatements="56" conditionals="18" coveredconditionals="12" methods="34" coveredmethods="21"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -264,9 +264,23 @@
         <line num="141" count="2" type="stmt"/>
         <line num="143" count="1" type="stmt"/>
         <line num="158" count="1" type="stmt"/>
-        <line num="159" count="1" type="stmt"/>
-        <line num="162" count="1" type="stmt"/>
-        <line num="163" count="1" type="stmt"/>
+        <line num="159" count="0" type="stmt"/>
+        <line num="162" count="0" type="stmt"/>
+        <line num="163" count="0" type="stmt"/>
+        <line num="177" count="1" type="stmt"/>
+        <line num="178" count="1" type="stmt"/>
+        <line num="181" count="1" type="stmt"/>
+        <line num="182" count="1" type="stmt"/>
+        <line num="183" count="1" type="stmt"/>
+        <line num="184" count="0" type="stmt"/>
+        <line num="185" count="0" type="stmt"/>
+        <line num="186" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="187" count="0" type="stmt"/>
+        <line num="189" count="0" type="stmt"/>
+        <line num="193" count="1" type="stmt"/>
+        <line num="195" count="1" type="stmt"/>
+        <line num="197" count="1" type="stmt"/>
+        <line num="198" count="1" type="stmt"/>
       </file>
     </package>
     <package name="fullStack.routes.middleware">
