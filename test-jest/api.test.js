@@ -420,11 +420,12 @@ describe("POST /user/login", () => {
 });
 
 describe("DELETE /user/deleteuser", () => {
-  test("should handle deleting an account", async () => {
+  test("should handle deleting an account", async done => {
     const response = await request(app)
       .delete("/api/user/deleteuser")
       .send({ token: token })
       .expect(200);
+    done();
   });
 });
 
